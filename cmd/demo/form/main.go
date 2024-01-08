@@ -7,7 +7,7 @@ import (
 	"slices"
 	"strings"
 
-	. "github.com/Gardego5/gohtml"
+	. "github.com/Gardego5/htmdsl"
 )
 
 func layout(title string, children ...HTMLElement) HTMLElement {
