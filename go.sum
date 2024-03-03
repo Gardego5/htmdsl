@@ -1,3 +1,5 @@
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/sym01/htmlsanitizer v1.1.0 h1:Q0NEwQmWTlC0st3rmbElEEaO5rM4LOuYnWtBT5pj5Ec=
 github.com/sym01/htmlsanitizer v1.1.0/go.mod h1:zazTkJ727MJTDrNcWDaOLlAgGMcsDNG94LJi6vYl6Ug=
 golang.org/x/text v0.14.0 h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ=

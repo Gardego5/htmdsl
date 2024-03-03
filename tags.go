@@ -81,7 +81,7 @@ func (tag A) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -104,6 +104,13 @@ func (tag A) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag A) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -152,7 +159,7 @@ func (tag Abbr) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -175,6 +182,13 @@ func (tag Abbr) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Abbr) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -223,7 +237,7 @@ func (tag Address) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -246,6 +260,13 @@ func (tag Address) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Address) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -281,6 +302,9 @@ func (tag Area) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Area) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Article []any
@@ -328,7 +352,7 @@ func (tag Article) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -351,6 +375,13 @@ func (tag Article) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Article) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -399,7 +430,7 @@ func (tag Aside) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -422,6 +453,13 @@ func (tag Aside) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Aside) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -470,7 +508,7 @@ func (tag Audio) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -493,6 +531,13 @@ func (tag Audio) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Audio) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -541,7 +586,7 @@ func (tag B) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -564,6 +609,13 @@ func (tag B) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag B) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -599,6 +651,9 @@ func (tag Base) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Base) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Bdi []any
@@ -646,7 +701,7 @@ func (tag Bdi) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -669,6 +724,13 @@ func (tag Bdi) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Bdi) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -717,7 +779,7 @@ func (tag Bdo) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -740,6 +802,13 @@ func (tag Bdo) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Bdo) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -788,7 +857,7 @@ func (tag Blockquote) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -811,6 +880,13 @@ func (tag Blockquote) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Blockquote) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -859,7 +935,7 @@ func (tag Body) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -882,6 +958,13 @@ func (tag Body) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Body) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -917,6 +1000,9 @@ func (tag Br) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Br) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Button []any
@@ -964,7 +1050,7 @@ func (tag Button) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -987,6 +1073,13 @@ func (tag Button) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Button) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1035,7 +1128,7 @@ func (tag Canvas) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1058,6 +1151,13 @@ func (tag Canvas) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Canvas) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1106,7 +1206,7 @@ func (tag Caption) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1129,6 +1229,13 @@ func (tag Caption) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Caption) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1177,7 +1284,7 @@ func (tag Cite) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1200,6 +1307,13 @@ func (tag Cite) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Cite) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1248,7 +1362,7 @@ func (tag Code) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1271,6 +1385,13 @@ func (tag Code) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Code) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1306,6 +1427,9 @@ func (tag Col) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Col) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Colgroup []any
@@ -1353,7 +1477,7 @@ func (tag Colgroup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1376,6 +1500,13 @@ func (tag Colgroup) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Colgroup) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1424,7 +1555,7 @@ func (tag Data) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1447,6 +1578,13 @@ func (tag Data) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Data) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1495,7 +1633,7 @@ func (tag Datalist) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1518,6 +1656,13 @@ func (tag Datalist) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Datalist) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1566,7 +1711,7 @@ func (tag Dd) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1589,6 +1734,13 @@ func (tag Dd) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Dd) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1637,7 +1789,7 @@ func (tag Del) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1660,6 +1812,13 @@ func (tag Del) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Del) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1708,7 +1867,7 @@ func (tag Details) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1731,6 +1890,13 @@ func (tag Details) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Details) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1779,7 +1945,7 @@ func (tag Dfn) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1802,6 +1968,13 @@ func (tag Dfn) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Dfn) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1850,7 +2023,7 @@ func (tag Dialog) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1873,6 +2046,13 @@ func (tag Dialog) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Dialog) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1921,7 +2101,7 @@ func (tag Div) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1944,6 +2124,13 @@ func (tag Div) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Div) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -1992,7 +2179,7 @@ func (tag Dl) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2015,6 +2202,13 @@ func (tag Dl) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Dl) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2063,7 +2257,7 @@ func (tag Dt) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2086,6 +2280,13 @@ func (tag Dt) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Dt) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2134,7 +2335,7 @@ func (tag Em) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2157,6 +2358,13 @@ func (tag Em) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Em) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2192,6 +2400,9 @@ func (tag Embed) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Embed) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Fieldset []any
@@ -2239,7 +2450,7 @@ func (tag Fieldset) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2262,6 +2473,13 @@ func (tag Fieldset) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Fieldset) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2310,7 +2528,7 @@ func (tag Figcaption) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2333,6 +2551,13 @@ func (tag Figcaption) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Figcaption) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2381,7 +2606,7 @@ func (tag Figure) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2404,6 +2629,13 @@ func (tag Figure) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Figure) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2452,7 +2684,7 @@ func (tag Footer) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2475,6 +2707,13 @@ func (tag Footer) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Footer) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2523,7 +2762,7 @@ func (tag Form) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2546,6 +2785,13 @@ func (tag Form) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Form) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2594,7 +2840,7 @@ func (tag H1) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2617,6 +2863,13 @@ func (tag H1) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag H1) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2665,7 +2918,7 @@ func (tag H2) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2688,6 +2941,13 @@ func (tag H2) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag H2) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2736,7 +2996,7 @@ func (tag H3) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2759,6 +3019,13 @@ func (tag H3) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag H3) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2807,7 +3074,7 @@ func (tag H4) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2830,6 +3097,13 @@ func (tag H4) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag H4) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2878,7 +3152,7 @@ func (tag H5) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2901,6 +3175,13 @@ func (tag H5) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag H5) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -2949,7 +3230,7 @@ func (tag H6) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2972,6 +3253,13 @@ func (tag H6) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag H6) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3020,7 +3308,7 @@ func (tag Head) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3043,6 +3331,13 @@ func (tag Head) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Head) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3091,7 +3386,7 @@ func (tag Header) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3114,6 +3409,13 @@ func (tag Header) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Header) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3162,7 +3464,7 @@ func (tag Hgroup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3185,6 +3487,13 @@ func (tag Hgroup) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Hgroup) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3220,6 +3529,9 @@ func (tag Hr) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Hr) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Html []any
@@ -3267,7 +3579,7 @@ func (tag Html) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3290,6 +3602,13 @@ func (tag Html) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Html) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3338,7 +3657,7 @@ func (tag I) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3361,6 +3680,13 @@ func (tag I) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag I) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3409,7 +3735,7 @@ func (tag Iframe) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3432,6 +3758,13 @@ func (tag Iframe) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Iframe) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3467,6 +3800,9 @@ func (tag Img) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Img) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Input baseAttrs
@@ -3501,6 +3837,9 @@ func (tag Input) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Input) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Ins []any
@@ -3548,7 +3887,7 @@ func (tag Ins) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3571,6 +3910,13 @@ func (tag Ins) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Ins) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3619,7 +3965,7 @@ func (tag Kbd) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3642,6 +3988,13 @@ func (tag Kbd) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Kbd) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3690,7 +4043,7 @@ func (tag Label) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3713,6 +4066,13 @@ func (tag Label) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Label) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3761,7 +4121,7 @@ func (tag Legend) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3784,6 +4144,13 @@ func (tag Legend) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Legend) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3832,7 +4199,7 @@ func (tag Li) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3855,6 +4222,13 @@ func (tag Li) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Li) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -3890,6 +4264,9 @@ func (tag Link) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Link) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Main []any
@@ -3937,7 +4314,7 @@ func (tag Main) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3960,6 +4337,13 @@ func (tag Main) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Main) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4008,7 +4392,7 @@ func (tag Map) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4031,6 +4415,13 @@ func (tag Map) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Map) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4079,7 +4470,7 @@ func (tag Mark) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4102,6 +4493,13 @@ func (tag Mark) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Mark) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4150,7 +4548,7 @@ func (tag Math) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4173,6 +4571,13 @@ func (tag Math) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Math) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4221,7 +4626,7 @@ func (tag Menu) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4244,6 +4649,13 @@ func (tag Menu) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Menu) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4279,6 +4691,9 @@ func (tag Menuitem) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Menuitem) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Meta baseAttrs
@@ -4313,6 +4728,9 @@ func (tag Meta) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Meta) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Meter []any
@@ -4360,7 +4778,7 @@ func (tag Meter) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4383,6 +4801,13 @@ func (tag Meter) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Meter) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4431,7 +4856,7 @@ func (tag Nav) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4454,6 +4879,13 @@ func (tag Nav) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Nav) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4502,7 +4934,7 @@ func (tag Noscript) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4525,6 +4957,13 @@ func (tag Noscript) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Noscript) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4573,7 +5012,7 @@ func (tag Object) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4596,6 +5035,13 @@ func (tag Object) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Object) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4644,7 +5090,7 @@ func (tag Ol) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4667,6 +5113,13 @@ func (tag Ol) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Ol) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4715,7 +5168,7 @@ func (tag Optgroup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4738,6 +5191,13 @@ func (tag Optgroup) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Optgroup) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4786,7 +5246,7 @@ func (tag Option) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4809,6 +5269,13 @@ func (tag Option) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Option) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4857,7 +5324,7 @@ func (tag Output) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4880,6 +5347,13 @@ func (tag Output) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Output) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4928,7 +5402,7 @@ func (tag P) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4951,6 +5425,13 @@ func (tag P) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag P) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -4986,6 +5467,9 @@ func (tag Param) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Param) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Picture []any
@@ -5033,7 +5517,7 @@ func (tag Picture) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5056,6 +5540,13 @@ func (tag Picture) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Picture) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5104,7 +5595,7 @@ func (tag Pre) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5127,6 +5618,13 @@ func (tag Pre) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Pre) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5175,7 +5673,7 @@ func (tag Progress) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5198,6 +5696,13 @@ func (tag Progress) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Progress) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5246,7 +5751,7 @@ func (tag Q) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5269,6 +5774,13 @@ func (tag Q) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Q) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5317,7 +5829,7 @@ func (tag Rb) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5340,6 +5852,13 @@ func (tag Rb) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Rb) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5388,7 +5907,7 @@ func (tag Rp) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5411,6 +5930,13 @@ func (tag Rp) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Rp) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5459,7 +5985,7 @@ func (tag Rt) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5482,6 +6008,13 @@ func (tag Rt) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Rt) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5530,7 +6063,7 @@ func (tag Rtc) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5553,6 +6086,13 @@ func (tag Rtc) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Rtc) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5601,7 +6141,7 @@ func (tag Ruby) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5624,6 +6164,13 @@ func (tag Ruby) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Ruby) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5672,7 +6219,7 @@ func (tag S) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5695,6 +6242,13 @@ func (tag S) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag S) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5743,7 +6297,7 @@ func (tag Samp) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5766,6 +6320,13 @@ func (tag Samp) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Samp) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5814,7 +6375,7 @@ func (tag Script) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5837,6 +6398,13 @@ func (tag Script) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Script) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5885,7 +6453,7 @@ func (tag Search) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5908,6 +6476,13 @@ func (tag Search) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Search) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -5956,7 +6531,7 @@ func (tag Section) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5979,6 +6554,13 @@ func (tag Section) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Section) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6027,7 +6609,7 @@ func (tag Select) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6050,6 +6632,13 @@ func (tag Select) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Select) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6098,7 +6687,7 @@ func (tag Slot) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6121,6 +6710,13 @@ func (tag Slot) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Slot) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6169,7 +6765,7 @@ func (tag Small) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6192,6 +6788,13 @@ func (tag Small) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Small) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6227,6 +6830,9 @@ func (tag Source) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Source) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type Span []any
@@ -6274,7 +6880,7 @@ func (tag Span) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6297,6 +6903,13 @@ func (tag Span) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Span) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6345,7 +6958,7 @@ func (tag Strong) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6368,6 +6981,13 @@ func (tag Strong) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Strong) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6416,7 +7036,7 @@ func (tag Style) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6439,6 +7059,13 @@ func (tag Style) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Style) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6487,7 +7114,7 @@ func (tag Sub) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6510,6 +7137,13 @@ func (tag Sub) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Sub) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6558,7 +7192,7 @@ func (tag Summary) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6581,6 +7215,13 @@ func (tag Summary) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Summary) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6629,7 +7270,7 @@ func (tag Sup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6652,6 +7293,13 @@ func (tag Sup) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Sup) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6700,7 +7348,7 @@ func (tag Svg) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6723,6 +7371,13 @@ func (tag Svg) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Svg) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6771,7 +7426,7 @@ func (tag Table) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6794,6 +7449,13 @@ func (tag Table) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Table) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6842,7 +7504,7 @@ func (tag Tbody) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6865,6 +7527,13 @@ func (tag Tbody) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Tbody) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6913,7 +7582,7 @@ func (tag Td) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6936,6 +7605,13 @@ func (tag Td) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Td) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -6984,7 +7660,7 @@ func (tag Template) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7007,6 +7683,13 @@ func (tag Template) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Template) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7055,7 +7738,7 @@ func (tag Textarea) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7078,6 +7761,13 @@ func (tag Textarea) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Textarea) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7126,7 +7816,7 @@ func (tag Tfoot) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7149,6 +7839,13 @@ func (tag Tfoot) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Tfoot) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7197,7 +7894,7 @@ func (tag Th) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7220,6 +7917,13 @@ func (tag Th) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Th) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7268,7 +7972,7 @@ func (tag Thead) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7291,6 +7995,13 @@ func (tag Thead) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Thead) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7339,7 +8050,7 @@ func (tag Time) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7362,6 +8073,13 @@ func (tag Time) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Time) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7410,7 +8128,7 @@ func (tag Title) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7433,6 +8151,13 @@ func (tag Title) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Title) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7481,7 +8206,7 @@ func (tag Tr) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7504,6 +8229,13 @@ func (tag Tr) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Tr) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7539,6 +8271,9 @@ func (tag Track) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Track) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 
 
 type U []any
@@ -7586,7 +8321,7 @@ func (tag U) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7609,6 +8344,13 @@ func (tag U) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag U) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7657,7 +8399,7 @@ func (tag Ul) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7680,6 +8422,13 @@ func (tag Ul) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Ul) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7728,7 +8477,7 @@ func (tag Var) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7751,6 +8500,13 @@ func (tag Var) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Var) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7799,7 +8555,7 @@ func (tag Video) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7822,6 +8578,13 @@ func (tag Video) Bytes() []byte {
 	b := bytes.Buffer{}
 	tag.WriteTo(&b)
 	return b.Bytes()
+}
+func (tag Video) PushAttrs(attrs ...Attr) PushAttrs {
+	erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
 }
 
 
@@ -7857,4 +8620,7 @@ func (tag Wbr) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag Wbr) PushAttrs(attrs ...Attr) PushAttrs {
+	return append(tag, attrs...)
+	}
 

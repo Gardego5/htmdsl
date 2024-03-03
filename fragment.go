@@ -16,6 +16,11 @@ type HTMLElement interface {
 	Bytes() []byte
 }
 
+type PushAttrs interface {
+	HTMLElement
+	PushAttrs(attrs ...Attr) PushAttrs
+}
+
 type Fragment []HTMLElement
 
 func (frag Fragment) element() {}
@@ -43,7 +48,7 @@ func (frag Fragment) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 
-func render(w io.Writer, child any) (int64, error) {
+func Render(w io.Writer, child any) (int64, error) {
 	switch child := child.(type) {
 	case HTMLElement:
 		n, err := child.WriteTo(w)
@@ -57,7 +62,7 @@ func render(w io.Writer, child any) (int64, error) {
 	case []HTMLElement:
 		n := int64(0)
 		for _, child := range child {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err

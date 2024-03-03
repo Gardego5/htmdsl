@@ -97,7 +97,7 @@ func (tag {{.Name | Title}}) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -121,4 +121,12 @@ func (tag {{.Name | Title}}) Bytes() []byte {
 	tag.WriteTo(&b)
 	return b.Bytes()
 }
+func (tag {{.Name | Title}}) PushAttrs(attrs ...Attr) PushAttrs {
+	{{if .Void}}return append(tag, attrs...)
+	{{else}}erased := make([]any, len(attrs))
+	for i, v := range attrs {
+		erased[i] = v
+	}
+	return append(tag, erased...)
+{{end}}}
 {{end}}
