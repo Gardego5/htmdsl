@@ -10,24 +10,12 @@ import (
 )
 
 func layout(title string, children ...HTMLElement) HTMLElement {
-	return Fragment{DOCTYPE, Html{Attrs{{"hidden"}, {"lang", "en"}},
+	return suspense.SyncArea(DOCTYPE, Html{Attrs{{"lang", "en"}},
 		Head{
 			Title{title},
 			Meta{{"charset", "UTF-8"}},
 			Meta{{"name", "viewport"}, {"content", "width=device-width, initial-scale=1.0"}},
 			Meta{{"http-equiv", "X-UA-Compatible"}, {"content", "ie=edge"}},
-
-			// Tailwind
-			Script{Attrs{{"type", "module"}, {"src", "https://cdn.skypack.dev/twind/shim"}}},
-			Script{Attrs{{"type", "twind-config"}}, PreEscaped(`{"theme":{"fontFamily":{"sans":["Rokkitt","sans-serif"]}}}`)},
-
-			// Google Fonts
-			Link{{"rel", "preconnect"}, {"href", "https://fonts.googleapis.com"}},
-			Link{{"rel", "preconnect"}, {"href", "https://fonts.gstatic.com"}, {"crossorigin", ""}},
-			Link{{"rel", "stylesheet"}, {"href", "https://fonts.googleapis.com/css2?family=Rokkitt&display=swap"}},
-
-			// Alpine.js
-			Script{Attrs{{"src", "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"}, {"defer"}}},
 		},
 		Body{
 			Script{PreEscaped(`
@@ -52,43 +40,39 @@ func layout(title string, children ...HTMLElement) HTMLElement {
 				children,
 			},
 		},
-	}}
+	})
+}
+
+func slowComponent(name string, delay int32) HTMLElement {
+	return suspense.Suspense{
+		Fallback: Div{"Loading ", name, "..."},
+		Children: func() any {
+			time.Sleep(time.Duration(delay) * time.Millisecond)
+			return Div{
+				H2{"Slow Component ", name},
+				P{"This is a slow component. ",
+					"I take ", delay, " milliseconds to load."},
+			}
+		},
+	}
 }
 
 func streamingDemo() io.WriterTo {
 	return layout("Streaming demo",
-		suspense.Suspense{
-			Fallback: Span{"Loading 1..."},
-			Children: func() any {
-				time.Sleep(1 * time.Second)
-				return Div{"Hello, world!"}
-			},
-		},
-		suspense.Suspense{
-			Fallback: Span{"Loading 2..."},
-			Children: func() any {
-				time.Sleep(1 * time.Second)
-				return Div{"Hello, again!"}
-			},
-		},
+		slowComponent("A", 1000),
+		slowComponent("B", 1500),
+		slowComponent("C", 300),
+		slowComponent("D", 400),
 	)
 }
 
 func main() {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("GET /normal", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(http.StatusOK)
 		streamingDemo().WriteTo(w)
-	})
-
-	mux.HandleFunc("GET /chunked", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(http.StatusOK)
-		dw := suspense.NewDeferrableWriter(w)
-		streamingDemo().WriteTo(dw)
-		dw.WriteDeferred()
 	})
 
 	http.ListenAndServe(":8080", mux)

@@ -27,9 +27,12 @@ type (
 	}
 )
 
-func NewDeferrableWriter(rw http.ResponseWriter) DeferrableWriter {
-	rc := http.NewResponseController(rw)
-	return &deferrableWriter{rc, rw, make(chan DeferredWriterTo), make(map[Id]struct{}), 0}
+func NewDeferrableWriter(w io.Writer) DeferrableWriter {
+	// TODO: we must do some assertions / checks here and automatically render
+	// with deferred data if the writer is a http.ResponseWriter we can Flush,
+	// and otherwise directly write the data.
+	rc := http.NewResponseController(w.(http.ResponseWriter))
+	return &deferrableWriter{rc, w, make(chan DeferredWriterTo), make(map[Id]struct{}), 0}
 }
 
 func (w *deferrableWriter) deferredChannel() chan DeferredWriterTo {
