@@ -95,6 +95,18 @@ func (tag A) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag A) element() {}
+func (tag A) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag A) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -166,6 +178,18 @@ func (tag Abbr) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Abbr) element() {}
+func (tag Abbr) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Abbr) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -237,6 +261,18 @@ func (tag Address) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Address) element() {}
+func (tag Address) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Address) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -271,6 +307,18 @@ func (tag Area) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Area) element() {}
+func (tag Area) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Area) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -342,6 +390,18 @@ func (tag Article) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Article) element() {}
+func (tag Article) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Article) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -413,6 +473,18 @@ func (tag Aside) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Aside) element() {}
+func (tag Aside) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Aside) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -484,6 +556,18 @@ func (tag Audio) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Audio) element() {}
+func (tag Audio) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Audio) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -555,6 +639,18 @@ func (tag B) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag B) element() {}
+func (tag B) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag B) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -589,6 +685,18 @@ func (tag Base) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Base) element() {}
+func (tag Base) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Base) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -660,6 +768,18 @@ func (tag Bdi) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Bdi) element() {}
+func (tag Bdi) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Bdi) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -731,6 +851,18 @@ func (tag Bdo) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Bdo) element() {}
+func (tag Bdo) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Bdo) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -802,6 +934,18 @@ func (tag Blockquote) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Blockquote) element() {}
+func (tag Blockquote) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Blockquote) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -873,6 +1017,18 @@ func (tag Body) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Body) element() {}
+func (tag Body) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Body) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -907,6 +1063,18 @@ func (tag Br) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Br) element() {}
+func (tag Br) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Br) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -978,6 +1146,18 @@ func (tag Button) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Button) element() {}
+func (tag Button) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Button) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1049,6 +1229,18 @@ func (tag Canvas) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Canvas) element() {}
+func (tag Canvas) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Canvas) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1120,6 +1312,18 @@ func (tag Caption) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Caption) element() {}
+func (tag Caption) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Caption) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1191,6 +1395,18 @@ func (tag Cite) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Cite) element() {}
+func (tag Cite) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Cite) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1262,6 +1478,18 @@ func (tag Code) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Code) element() {}
+func (tag Code) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Code) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1296,6 +1524,18 @@ func (tag Col) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Col) element() {}
+func (tag Col) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Col) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1367,6 +1607,18 @@ func (tag Colgroup) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Colgroup) element() {}
+func (tag Colgroup) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Colgroup) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1438,6 +1690,18 @@ func (tag Data) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Data) element() {}
+func (tag Data) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Data) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1509,6 +1773,18 @@ func (tag Datalist) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Datalist) element() {}
+func (tag Datalist) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Datalist) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1580,6 +1856,18 @@ func (tag Dd) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Dd) element() {}
+func (tag Dd) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Dd) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1651,6 +1939,18 @@ func (tag Del) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Del) element() {}
+func (tag Del) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Del) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1722,6 +2022,18 @@ func (tag Details) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Details) element() {}
+func (tag Details) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Details) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1793,6 +2105,18 @@ func (tag Dfn) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Dfn) element() {}
+func (tag Dfn) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Dfn) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1864,6 +2188,18 @@ func (tag Dialog) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Dialog) element() {}
+func (tag Dialog) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Dialog) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -1935,6 +2271,18 @@ func (tag Div) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Div) element() {}
+func (tag Div) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Div) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2006,6 +2354,18 @@ func (tag Dl) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Dl) element() {}
+func (tag Dl) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Dl) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2077,6 +2437,18 @@ func (tag Dt) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Dt) element() {}
+func (tag Dt) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Dt) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2148,6 +2520,18 @@ func (tag Em) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Em) element() {}
+func (tag Em) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Em) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2182,6 +2566,18 @@ func (tag Embed) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Embed) element() {}
+func (tag Embed) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Embed) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2253,6 +2649,18 @@ func (tag Fieldset) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Fieldset) element() {}
+func (tag Fieldset) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Fieldset) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2324,6 +2732,18 @@ func (tag Figcaption) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Figcaption) element() {}
+func (tag Figcaption) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Figcaption) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2395,6 +2815,18 @@ func (tag Figure) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Figure) element() {}
+func (tag Figure) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Figure) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2466,6 +2898,18 @@ func (tag Footer) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Footer) element() {}
+func (tag Footer) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Footer) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2537,6 +2981,18 @@ func (tag Form) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Form) element() {}
+func (tag Form) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Form) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2608,6 +3064,18 @@ func (tag H1) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag H1) element() {}
+func (tag H1) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag H1) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2679,6 +3147,18 @@ func (tag H2) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag H2) element() {}
+func (tag H2) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag H2) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2750,6 +3230,18 @@ func (tag H3) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag H3) element() {}
+func (tag H3) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag H3) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2821,6 +3313,18 @@ func (tag H4) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag H4) element() {}
+func (tag H4) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag H4) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2892,6 +3396,18 @@ func (tag H5) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag H5) element() {}
+func (tag H5) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag H5) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -2963,6 +3479,18 @@ func (tag H6) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag H6) element() {}
+func (tag H6) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag H6) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3034,6 +3562,18 @@ func (tag Head) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Head) element() {}
+func (tag Head) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Head) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3105,6 +3645,18 @@ func (tag Header) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Header) element() {}
+func (tag Header) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Header) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3176,6 +3728,18 @@ func (tag Hgroup) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Hgroup) element() {}
+func (tag Hgroup) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Hgroup) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3210,6 +3774,18 @@ func (tag Hr) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Hr) element() {}
+func (tag Hr) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Hr) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3281,6 +3857,18 @@ func (tag Html) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Html) element() {}
+func (tag Html) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Html) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3352,6 +3940,18 @@ func (tag I) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag I) element() {}
+func (tag I) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag I) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3423,6 +4023,18 @@ func (tag Iframe) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Iframe) element() {}
+func (tag Iframe) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Iframe) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3457,6 +4069,18 @@ func (tag Img) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Img) element() {}
+func (tag Img) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Img) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3491,6 +4115,18 @@ func (tag Input) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Input) element() {}
+func (tag Input) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Input) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3562,6 +4198,18 @@ func (tag Ins) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Ins) element() {}
+func (tag Ins) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Ins) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3633,6 +4281,18 @@ func (tag Kbd) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Kbd) element() {}
+func (tag Kbd) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Kbd) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3704,6 +4364,18 @@ func (tag Label) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Label) element() {}
+func (tag Label) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Label) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3775,6 +4447,18 @@ func (tag Legend) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Legend) element() {}
+func (tag Legend) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Legend) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3846,6 +4530,18 @@ func (tag Li) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Li) element() {}
+func (tag Li) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Li) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3880,6 +4576,18 @@ func (tag Link) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Link) element() {}
+func (tag Link) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Link) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -3951,6 +4659,18 @@ func (tag Main) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Main) element() {}
+func (tag Main) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Main) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4022,6 +4742,18 @@ func (tag Map) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Map) element() {}
+func (tag Map) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Map) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4093,6 +4825,18 @@ func (tag Mark) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Mark) element() {}
+func (tag Mark) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Mark) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4164,6 +4908,18 @@ func (tag Math) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Math) element() {}
+func (tag Math) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Math) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4235,6 +4991,18 @@ func (tag Menu) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Menu) element() {}
+func (tag Menu) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Menu) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4269,6 +5037,18 @@ func (tag Menuitem) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Menuitem) element() {}
+func (tag Menuitem) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Menuitem) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4303,6 +5083,18 @@ func (tag Meta) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Meta) element() {}
+func (tag Meta) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Meta) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4374,6 +5166,18 @@ func (tag Meter) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Meter) element() {}
+func (tag Meter) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Meter) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4445,6 +5249,18 @@ func (tag Nav) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Nav) element() {}
+func (tag Nav) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Nav) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4516,6 +5332,18 @@ func (tag Noscript) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Noscript) element() {}
+func (tag Noscript) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Noscript) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4587,6 +5415,18 @@ func (tag Object) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Object) element() {}
+func (tag Object) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Object) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4658,6 +5498,18 @@ func (tag Ol) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Ol) element() {}
+func (tag Ol) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Ol) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4729,6 +5581,18 @@ func (tag Optgroup) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Optgroup) element() {}
+func (tag Optgroup) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Optgroup) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4800,6 +5664,18 @@ func (tag Option) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Option) element() {}
+func (tag Option) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Option) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4871,6 +5747,18 @@ func (tag Output) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Output) element() {}
+func (tag Output) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Output) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4942,6 +5830,18 @@ func (tag P) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag P) element() {}
+func (tag P) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag P) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -4976,6 +5876,18 @@ func (tag Param) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Param) element() {}
+func (tag Param) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Param) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5047,6 +5959,18 @@ func (tag Picture) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Picture) element() {}
+func (tag Picture) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Picture) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5118,6 +6042,18 @@ func (tag Pre) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Pre) element() {}
+func (tag Pre) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Pre) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5189,6 +6125,18 @@ func (tag Progress) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Progress) element() {}
+func (tag Progress) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Progress) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5260,6 +6208,18 @@ func (tag Q) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Q) element() {}
+func (tag Q) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Q) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5331,6 +6291,18 @@ func (tag Rb) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Rb) element() {}
+func (tag Rb) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Rb) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5402,6 +6374,18 @@ func (tag Rp) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Rp) element() {}
+func (tag Rp) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Rp) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5473,6 +6457,18 @@ func (tag Rt) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Rt) element() {}
+func (tag Rt) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Rt) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5544,6 +6540,18 @@ func (tag Rtc) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Rtc) element() {}
+func (tag Rtc) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Rtc) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5615,6 +6623,18 @@ func (tag Ruby) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Ruby) element() {}
+func (tag Ruby) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Ruby) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5686,6 +6706,18 @@ func (tag S) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag S) element() {}
+func (tag S) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag S) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5757,6 +6789,18 @@ func (tag Samp) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Samp) element() {}
+func (tag Samp) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Samp) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5828,6 +6872,18 @@ func (tag Script) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Script) element() {}
+func (tag Script) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Script) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5899,6 +6955,18 @@ func (tag Search) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Search) element() {}
+func (tag Search) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Search) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -5970,6 +7038,18 @@ func (tag Section) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Section) element() {}
+func (tag Section) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Section) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6041,6 +7121,18 @@ func (tag Select) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Select) element() {}
+func (tag Select) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Select) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6112,6 +7204,18 @@ func (tag Slot) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Slot) element() {}
+func (tag Slot) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Slot) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6183,6 +7287,18 @@ func (tag Small) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Small) element() {}
+func (tag Small) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Small) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6217,6 +7333,18 @@ func (tag Source) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Source) element() {}
+func (tag Source) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Source) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6288,6 +7416,18 @@ func (tag Span) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Span) element() {}
+func (tag Span) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Span) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6359,6 +7499,18 @@ func (tag Strong) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Strong) element() {}
+func (tag Strong) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Strong) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6430,6 +7582,18 @@ func (tag Style) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Style) element() {}
+func (tag Style) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Style) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6501,6 +7665,18 @@ func (tag Sub) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Sub) element() {}
+func (tag Sub) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Sub) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6572,6 +7748,18 @@ func (tag Summary) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Summary) element() {}
+func (tag Summary) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Summary) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6643,6 +7831,18 @@ func (tag Sup) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Sup) element() {}
+func (tag Sup) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Sup) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6714,6 +7914,18 @@ func (tag Svg) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Svg) element() {}
+func (tag Svg) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Svg) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6785,6 +7997,18 @@ func (tag Table) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Table) element() {}
+func (tag Table) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Table) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6856,6 +8080,18 @@ func (tag Tbody) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Tbody) element() {}
+func (tag Tbody) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Tbody) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6927,6 +8163,18 @@ func (tag Td) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Td) element() {}
+func (tag Td) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Td) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -6998,6 +8246,18 @@ func (tag Template) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Template) element() {}
+func (tag Template) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Template) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7069,6 +8329,18 @@ func (tag Textarea) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Textarea) element() {}
+func (tag Textarea) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Textarea) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7140,6 +8412,18 @@ func (tag Tfoot) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Tfoot) element() {}
+func (tag Tfoot) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Tfoot) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7211,6 +8495,18 @@ func (tag Th) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Th) element() {}
+func (tag Th) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Th) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7282,6 +8578,18 @@ func (tag Thead) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Thead) element() {}
+func (tag Thead) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Thead) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7353,6 +8661,18 @@ func (tag Time) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Time) element() {}
+func (tag Time) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Time) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7424,6 +8744,18 @@ func (tag Title) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Title) element() {}
+func (tag Title) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Title) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7495,6 +8827,18 @@ func (tag Tr) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Tr) element() {}
+func (tag Tr) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Tr) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7529,6 +8873,18 @@ func (tag Track) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Track) element() {}
+func (tag Track) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Track) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7600,6 +8956,18 @@ func (tag U) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag U) element() {}
+func (tag U) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag U) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7671,6 +9039,18 @@ func (tag Ul) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Ul) element() {}
+func (tag Ul) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Ul) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7742,6 +9122,18 @@ func (tag Var) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Var) element() {}
+func (tag Var) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Var) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7813,6 +9205,18 @@ func (tag Video) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }
 func (tag Video) element() {}
+func (tag Video) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Video) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
@@ -7847,6 +9251,18 @@ func (tag Wbr) WriteTo(w io.Writer) (int64, error) {
 	return n, err
 }
 func (tag Wbr) element() {}
+func (tag Wbr) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag Wbr) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)

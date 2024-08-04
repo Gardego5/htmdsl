@@ -111,6 +111,18 @@ func (tag {{.Name | Title}}) WriteTo(w io.Writer) (int64, error) {
 	return n, nil
 }{{end}}
 func (tag {{.Name | Title}}) element() {}
+func (tag {{.Name | Title}}) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := tag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
+}
 func (tag {{.Name | Title}}) String() string {
 	b := strings.Builder{}
 	tag.WriteTo(&b)
