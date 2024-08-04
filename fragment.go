@@ -14,6 +14,7 @@ type HTMLElement interface {
 	element()
 	String() string
 	Bytes() []byte
+	Reader() io.Reader
 }
 
 type Fragment []HTMLElement
@@ -41,6 +42,18 @@ func (frag Fragment) WriteTo(w io.Writer) (int64, error) {
 	}
 
 	return n, nil
+}
+func (frag Fragment) Reader() io.Reader {
+	r, w := io.Pipe()
+	go func(w *io.PipeWriter) {
+		_, err := frag.WriteTo(w)
+		if err != nil {
+			w.CloseWithError(err)
+		} else {
+			w.Close()
+		}
+	}(w)
+	return r
 }
 
 func render(w io.Writer, child any) (int64, error) {
