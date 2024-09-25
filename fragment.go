@@ -67,6 +67,9 @@ func render(w io.Writer, child any) (int64, error) {
 	case io.WriterTo:
 		n, err := child.WriteTo(htmlsanitizer.NewWriter(w))
 		return n, err
+	case io.Reader:
+		n, err := io.Copy(htmlsanitizer.NewWriter(w), child)
+		return n, err
 	case []HTMLElement:
 		n := int64(0)
 		for _, child := range child {
