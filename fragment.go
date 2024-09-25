@@ -17,7 +17,7 @@ type HTMLElement interface {
 	Reader() io.Reader
 }
 
-type Fragment []HTMLElement
+type Fragment []any
 
 func (frag Fragment) element() {}
 func (frag Fragment) String() string {
@@ -34,7 +34,7 @@ func (frag Fragment) WriteTo(w io.Writer) (int64, error) {
 	n := int64(0)
 
 	for _, child := range frag {
-		nn, err := child.WriteTo(w)
+		nn, err := render(w, child)
 		n += nn
 		if err != nil {
 			return 0, err
