@@ -30,13 +30,28 @@ type baseAttrs []Attr
 func (attrs baseAttrs) attr() {}
 func (attrs baseAttrs) WriteTo(w io.Writer) (int64, error) {
 	n := int64(0)
+
+	classes := []string{}
+
 	for _, attr := range attrs {
+		if attr[0] == "class" {
+			classes = append(classes, attr[1])
+			continue
+		}
+
 		nn, err := attr.WriteTo(w)
 		n += nn
 		if err != nil {
 			return n, err
 		}
 	}
+
+	nn, err := fmt.Fprintf(w, " %s=\"%s\"", "class", strings.Join(classes, " "))
+	if err != nil {
+		return n, err
+	}
+	n += int64(nn)
+
 	return n, nil
 }
 
@@ -45,4 +60,12 @@ type Attrs baseAttrs
 func (attrs Attrs) attr() {}
 func (attrs Attrs) WriteTo(w io.Writer) (int64, error) {
 	return baseAttrs(attrs).WriteTo(w)
+}
+
+func Cond(cond bool, attrs ...Attr) Attrs {
+	if cond {
+		return Attrs(attrs)
+	} else {
+		return nil
+	}
 }
