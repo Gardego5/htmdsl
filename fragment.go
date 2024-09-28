@@ -60,6 +60,8 @@ type HTMLComponent interface{ Render() HTMLElement }
 
 func Render(w io.Writer, child any) (int64, error) {
 	switch child := child.(type) {
+	case nil:
+		return 0, nil
 	case HTMLComponent:
 		return child.Render().WriteTo(w)
 	case HTMLElement:
