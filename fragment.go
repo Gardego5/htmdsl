@@ -65,7 +65,11 @@ func Render(w io.Writer, child any) (int64, error) {
 
 	switch child := child.(type) {
 	case HTMLComponent:
-		return child.Render().WriteTo(w)
+		if child := child.Render(); child != nil {
+			return child.WriteTo(w)
+		} else {
+			return 0, nil
+		}
 	case HTMLElement:
 		return child.WriteTo(w)
 	case string:
