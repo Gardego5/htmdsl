@@ -59,9 +59,11 @@ func (frag Fragment) Reader() io.Reader {
 type HTMLComponent interface{ Render() HTMLElement }
 
 func Render(w io.Writer, child any) (int64, error) {
-	switch child := child.(type) {
-	case nil:
+	if child == nil {
 		return 0, nil
+	}
+
+	switch child := child.(type) {
 	case HTMLComponent:
 		return child.Render().WriteTo(w)
 	case HTMLElement:
