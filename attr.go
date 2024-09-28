@@ -46,11 +46,13 @@ func (attrs baseAttrs) WriteTo(w io.Writer) (int64, error) {
 		}
 	}
 
-	nn, err := fmt.Fprintf(w, " %s=\"%s\"", "class", strings.Join(classes, " "))
-	if err != nil {
-		return n, err
+	if len(classes) > 0 {
+		nn, err := fmt.Fprintf(w, " %s=\"%s\"", "class", strings.Join(classes, " "))
+		if err != nil {
+			return n, err
+		}
+		n += int64(nn)
 	}
-	n += int64(nn)
 
 	return n, nil
 }
@@ -60,12 +62,4 @@ type Attrs baseAttrs
 func (attrs Attrs) attr() {}
 func (attrs Attrs) WriteTo(w io.Writer) (int64, error) {
 	return baseAttrs(attrs).WriteTo(w)
-}
-
-func Cond(cond bool, attrs ...Attr) Attrs {
-	if cond {
-		return Attrs(attrs)
-	} else {
-		return nil
-	}
 }

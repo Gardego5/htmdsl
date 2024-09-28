@@ -97,7 +97,7 @@ func (tag {{.Name | Title}}) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err

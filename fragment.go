@@ -34,7 +34,7 @@ func (frag Fragment) WriteTo(w io.Writer) (int64, error) {
 	n := int64(0)
 
 	for _, child := range frag {
-		nn, err := render(w, child)
+		nn, err := Render(w, child)
 		n += nn
 		if err != nil {
 			return 0, err
@@ -56,24 +56,31 @@ func (frag Fragment) Reader() io.Reader {
 	return r
 }
 
-func render(w io.Writer, child any) (int64, error) {
+type HTMLComponent interface{ Render() HTMLElement }
+
+func Render(w io.Writer, child any) (int64, error) {
 	switch child := child.(type) {
+	case HTMLComponent:
+		return child.Render().WriteTo(w)
 	case HTMLElement:
-		n, err := child.WriteTo(w)
-		return n, err
+		return child.WriteTo(w)
 	case string:
 		n, err := htmlsanitizer.NewWriter(w).Write([]byte(child))
 		return int64(n), err
+	case *string:
+		if child == nil {
+			return 0, nil
+		} else {
+			return Render(w, *child)
+		}
 	case io.WriterTo:
-		n, err := child.WriteTo(htmlsanitizer.NewWriter(w))
-		return n, err
+		return child.WriteTo(htmlsanitizer.NewWriter(w))
 	case io.Reader:
-		n, err := io.Copy(htmlsanitizer.NewWriter(w), child)
-		return n, err
+		return io.Copy(htmlsanitizer.NewWriter(w), child)
 	case []HTMLElement:
 		n := int64(0)
 		for _, child := range child {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err

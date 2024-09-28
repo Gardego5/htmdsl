@@ -81,7 +81,7 @@ func (tag A) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -164,7 +164,7 @@ func (tag Abbr) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -247,7 +247,7 @@ func (tag Address) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -376,7 +376,7 @@ func (tag Article) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -459,7 +459,7 @@ func (tag Aside) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -542,7 +542,7 @@ func (tag Audio) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -625,7 +625,7 @@ func (tag B) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -754,7 +754,7 @@ func (tag Bdi) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -837,7 +837,7 @@ func (tag Bdo) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -920,7 +920,7 @@ func (tag Blockquote) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1003,7 +1003,7 @@ func (tag Body) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1132,7 +1132,7 @@ func (tag Button) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1215,7 +1215,7 @@ func (tag Canvas) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1298,7 +1298,7 @@ func (tag Caption) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1381,7 +1381,7 @@ func (tag Cite) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1464,7 +1464,7 @@ func (tag Code) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1593,7 +1593,7 @@ func (tag Colgroup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1676,7 +1676,7 @@ func (tag Data) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1759,7 +1759,7 @@ func (tag Datalist) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1842,7 +1842,7 @@ func (tag Dd) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -1925,7 +1925,7 @@ func (tag Del) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2008,7 +2008,7 @@ func (tag Details) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2091,7 +2091,7 @@ func (tag Dfn) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2174,7 +2174,7 @@ func (tag Dialog) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2257,7 +2257,7 @@ func (tag Div) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2340,7 +2340,7 @@ func (tag Dl) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2423,7 +2423,7 @@ func (tag Dt) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2506,7 +2506,7 @@ func (tag Em) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2635,7 +2635,7 @@ func (tag Fieldset) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2718,7 +2718,7 @@ func (tag Figcaption) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2801,7 +2801,7 @@ func (tag Figure) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2884,7 +2884,7 @@ func (tag Footer) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -2967,7 +2967,7 @@ func (tag Form) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3050,7 +3050,7 @@ func (tag H1) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3133,7 +3133,7 @@ func (tag H2) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3216,7 +3216,7 @@ func (tag H3) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3299,7 +3299,7 @@ func (tag H4) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3382,7 +3382,7 @@ func (tag H5) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3465,7 +3465,7 @@ func (tag H6) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3548,7 +3548,7 @@ func (tag Head) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3631,7 +3631,7 @@ func (tag Header) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3714,7 +3714,7 @@ func (tag Hgroup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3843,7 +3843,7 @@ func (tag Html) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -3926,7 +3926,7 @@ func (tag I) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4009,7 +4009,7 @@ func (tag Iframe) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4184,7 +4184,7 @@ func (tag Ins) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4267,7 +4267,7 @@ func (tag Kbd) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4350,7 +4350,7 @@ func (tag Label) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4433,7 +4433,7 @@ func (tag Legend) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4516,7 +4516,7 @@ func (tag Li) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4645,7 +4645,7 @@ func (tag Main) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4728,7 +4728,7 @@ func (tag Map) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4811,7 +4811,7 @@ func (tag Mark) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4894,7 +4894,7 @@ func (tag Math) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -4977,7 +4977,7 @@ func (tag Menu) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5152,7 +5152,7 @@ func (tag Meter) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5235,7 +5235,7 @@ func (tag Nav) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5318,7 +5318,7 @@ func (tag Noscript) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5401,7 +5401,7 @@ func (tag Object) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5484,7 +5484,7 @@ func (tag Ol) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5567,7 +5567,7 @@ func (tag Optgroup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5650,7 +5650,7 @@ func (tag Option) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5733,7 +5733,7 @@ func (tag Output) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5816,7 +5816,7 @@ func (tag P) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -5945,7 +5945,7 @@ func (tag Picture) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6028,7 +6028,7 @@ func (tag Pre) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6111,7 +6111,7 @@ func (tag Progress) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6194,7 +6194,7 @@ func (tag Q) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6277,7 +6277,7 @@ func (tag Rb) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6360,7 +6360,7 @@ func (tag Rp) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6443,7 +6443,7 @@ func (tag Rt) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6526,7 +6526,7 @@ func (tag Rtc) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6609,7 +6609,7 @@ func (tag Ruby) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6692,7 +6692,7 @@ func (tag S) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6775,7 +6775,7 @@ func (tag Samp) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6858,7 +6858,7 @@ func (tag Script) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -6941,7 +6941,7 @@ func (tag Search) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7024,7 +7024,7 @@ func (tag Section) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7107,7 +7107,7 @@ func (tag Select) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7190,7 +7190,7 @@ func (tag Slot) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7273,7 +7273,7 @@ func (tag Small) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7402,7 +7402,7 @@ func (tag Span) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7485,7 +7485,7 @@ func (tag Strong) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7568,7 +7568,7 @@ func (tag Style) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7651,7 +7651,7 @@ func (tag Sub) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7734,7 +7734,7 @@ func (tag Summary) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7817,7 +7817,7 @@ func (tag Sup) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7900,7 +7900,7 @@ func (tag Svg) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -7983,7 +7983,7 @@ func (tag Table) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8066,7 +8066,7 @@ func (tag Tbody) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8149,7 +8149,7 @@ func (tag Td) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8232,7 +8232,7 @@ func (tag Template) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8315,7 +8315,7 @@ func (tag Textarea) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8398,7 +8398,7 @@ func (tag Tfoot) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8481,7 +8481,7 @@ func (tag Th) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8564,7 +8564,7 @@ func (tag Thead) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8647,7 +8647,7 @@ func (tag Time) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8730,7 +8730,7 @@ func (tag Title) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8813,7 +8813,7 @@ func (tag Tr) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -8942,7 +8942,7 @@ func (tag U) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -9025,7 +9025,7 @@ func (tag Ul) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -9108,7 +9108,7 @@ func (tag Var) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
@@ -9191,7 +9191,7 @@ func (tag Video) WriteTo(w io.Writer) (int64, error) {
 
 	if children && idx >= 0 {
 		for _, child := range tag[idx:] {
-			nn, err := render(w, child)
+			nn, err := Render(w, child)
 			n += nn
 			if err != nil {
 				return n, err
