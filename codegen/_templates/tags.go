@@ -5,4 +5,4 @@ package html
 {{range .}}
 {{if .Desc}}// {{.Desc}}{{end}}
 type {{.Name | Title}} {{if .Void}}Attrs{{else}}[]any{{end}}
-func (tag {{.Name | Title}}) Render() HTMLElement { return {{if .Void}}AttrsElement("{{.Name}}"{{else}}Element("{{.Name}}"{{end}}, tag...) }{{end}}
+func (tag {{.Name | Title}}) Render() RenderedHTML { return {{if .Void}}AttrsElement("{{.Name}}"{{else}}Element("{{.Name}}"{{end}}, tag...) }{{end}}

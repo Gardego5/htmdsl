@@ -43,7 +43,7 @@ func (i conditional) ElseIf(cond bool, then any) conditional {
 	}
 }
 
-func (i conditional) Render() html.HTMLElement {
+func (i conditional) Render() html.RenderedHTML {
 	if i.cond {
 		return html.Fragment{i.then}
 	}

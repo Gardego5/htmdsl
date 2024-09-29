@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	. "github.com/Gardego5/htmdsl"
@@ -9,7 +10,7 @@ import (
 
 type Page [2]HTML
 
-func (page Page) Render() HTMLElement {
+func (page Page) Render() RenderedHTML {
 	return Fragment{DOCTYPE, Html{
 		Head{
 			Meta{{"charset", "UTF-8"}},
@@ -37,7 +38,7 @@ const (
 	Plus
 )
 
-func (list List) Render() HTMLElement {
+func (list List) Render() RenderedHTML {
 	items := make([]HTML, len(list.Items))
 	for i, item := range list.Items {
 		items[i] = Li{
@@ -81,5 +82,5 @@ ul {
 			},
 		})
 	})
-	http.ListenAndServe(":8080", mux)
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }

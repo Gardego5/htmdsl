@@ -1,11 +1,8 @@
 package html
 
-import (
-	"io"
-	"strings"
-)
+import "io"
 
-func Element(tag string, children ...any) HTMLElement {
+func Element(tag string, children ...any) RenderedHTML {
 	childAttrs, childEls := make(map[string]string), []any{}
 
 	for _, child := range children {
@@ -25,7 +22,7 @@ func Element(tag string, children ...any) HTMLElement {
 	return el
 }
 
-func AttrsElement(tag string, attrs ...Attr) HTMLElement {
+func AttrsElement(tag string, attrs ...Attr) RenderedHTML {
 	el := el{tag, make(map[string]string), nil}
 	for _, attr := range attrs {
 		addAttr(el.attrs, attr[0], attr[1])
@@ -41,11 +38,12 @@ type (
 	}
 )
 
-var _ HTMLElement = (*el)(nil)
-var _ HTMLElement = (*el)(nil)
+var (
+	_ RenderedHTML = (*el)(nil)
+	_ HTML         = (*el)(nil)
+)
 
-func (e el) Render() HTMLElement { return e }
-func (e el) element()            {}
+func (e el) Render() RenderedHTML { return e }
 func (e el) WriteTo(w io.Writer) (int64, error) {
 	nn := int64(0)
 	n, err := w.Write([]byte("<" + e.tag))
@@ -84,26 +82,6 @@ func (e el) WriteTo(w io.Writer) (int64, error) {
 		nn += int64(n)
 		return nn, err
 	}
-}
-func (e el) Bytes() []byte {
-	b := strings.Builder{}
-	e.WriteTo(&b)
-	return []byte(b.String())
-}
-func (e el) String() string {
-	return string(e.Bytes())
-}
-func (e el) Reader() io.Reader {
-	r, w := io.Pipe()
-	go func(w *io.PipeWriter) {
-		_, err := e.WriteTo(w)
-		if err != nil {
-			w.CloseWithError(err)
-		} else {
-			w.Close()
-		}
-	}(w)
-	return r
 }
 
 func addAttr(attrs map[string]string, key string, value string) {

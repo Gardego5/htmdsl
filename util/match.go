@@ -29,4 +29,4 @@ func (m match) Default(then any) any {
 		return then
 	}
 }
-func (m match) Render() html.HTMLElement { return html.Fragment{m.val} }
+func (m match) Render() html.RenderedHTML { return html.Fragment{m.val} }

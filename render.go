@@ -7,7 +7,10 @@ import (
 	"github.com/sym01/htmlsanitizer"
 )
 
-type HTML interface{ Render() HTMLElement }
+type (
+	HTML         interface{ Render() RenderedHTML }
+	RenderedHTML interface{ io.WriterTo }
+)
 
 func Render(w io.Writer, child any) (int64, error) {
 	if child == nil {
@@ -15,7 +18,7 @@ func Render(w io.Writer, child any) (int64, error) {
 	}
 
 	switch child := child.(type) {
-	case HTMLElement:
+	case RenderedHTML:
 		return child.WriteTo(w)
 	case HTML:
 		if child := child.Render(); child != nil {
@@ -36,7 +39,7 @@ func Render(w io.Writer, child any) (int64, error) {
 		return child.WriteTo(htmlsanitizer.NewWriter(w))
 	case io.Reader:
 		return io.Copy(htmlsanitizer.NewWriter(w), child)
-	case []HTMLElement:
+	case []RenderedHTML:
 		n := int64(0)
 		for _, child := range child {
 			nn, err := Render(w, child)
@@ -47,6 +50,16 @@ func Render(w io.Writer, child any) (int64, error) {
 		}
 		return n, nil
 	case []HTML:
+		n := int64(0)
+		for _, child := range child {
+			nn, err := Render(w, child)
+			n += nn
+			if err != nil {
+				return n, err
+			}
+		}
+		return n, nil
+	case []any:
 		n := int64(0)
 		for _, child := range child {
 			nn, err := Render(w, child)
