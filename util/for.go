@@ -9,3 +9,13 @@ func For[T any](iterable []T, f func(int, T) any) html.Fragment {
 	}
 	return res
 }
+
+func ForMap[K comparable, V any](m map[K]V, f func(K, V) any) html.Fragment {
+	res := make(html.Fragment, len(m))
+	i := 0
+	for k, v := range m {
+		res[i] = f(k, v)
+		i++
+	}
+	return res
+}
