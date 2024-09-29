@@ -9,7 +9,7 @@ type (
 	}
 )
 
-var _ html.HTMLComponent = (*conditional)(nil)
+var _ html.HTML = (*conditional)(nil)
 
 func Switch() conditional                { return conditional{} }
 func If(bool bool, then any) conditional { return conditional{cond: bool, then: then} }

@@ -2,11 +2,8 @@ package html
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"strings"
-
-	"github.com/sym01/htmlsanitizer"
 )
 
 type HTMLElement interface {
@@ -19,7 +16,11 @@ type HTMLElement interface {
 
 type Fragment []any
 
-func (frag Fragment) element() {}
+var _ HTMLElement = Fragment(nil)
+var _ HTML = Fragment(nil)
+
+func (frag Fragment) Render() HTMLElement { return frag }
+func (frag Fragment) element()            {}
 func (frag Fragment) String() string {
 	b := strings.Builder{}
 	frag.WriteTo(&b)
@@ -54,49 +55,4 @@ func (frag Fragment) Reader() io.Reader {
 		}
 	}(w)
 	return r
-}
-
-type HTMLComponent interface{ Render() HTMLElement }
-
-func Render(w io.Writer, child any) (int64, error) {
-	if child == nil {
-		return 0, nil
-	}
-
-	switch child := child.(type) {
-	case HTMLComponent:
-		if child := child.Render(); child != nil {
-			return child.WriteTo(w)
-		} else {
-			return 0, nil
-		}
-	case HTMLElement:
-		return child.WriteTo(w)
-	case string:
-		n, err := htmlsanitizer.NewWriter(w).Write([]byte(child))
-		return int64(n), err
-	case *string:
-		if child == nil {
-			return 0, nil
-		} else {
-			return Render(w, *child)
-		}
-	case io.WriterTo:
-		return child.WriteTo(htmlsanitizer.NewWriter(w))
-	case io.Reader:
-		return io.Copy(htmlsanitizer.NewWriter(w), child)
-	case []HTMLElement:
-		n := int64(0)
-		for _, child := range child {
-			nn, err := Render(w, child)
-			n += nn
-			if err != nil {
-				return n, err
-			}
-		}
-		return n, nil
-	default:
-		n, err := fmt.Fprint(htmlsanitizer.NewWriter(w), child)
-		return int64(n), err
-	}
 }

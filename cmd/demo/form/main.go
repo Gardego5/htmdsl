@@ -10,7 +10,7 @@ import (
 	. "github.com/Gardego5/htmdsl"
 )
 
-func layout(title string, children ...HTMLElement) HTMLElement {
+func layout(title string, children ...HTML) HTML {
 	return Fragment{DOCTYPE, Html{Attrs{{"hidden"}, {"lang", "en"}},
 		Head{
 			Title{title},
@@ -103,7 +103,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 		},
 	)
 
-	page.WriteTo(w)
+	Render(w, page)
 }
 
 func main() {

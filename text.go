@@ -5,11 +5,13 @@ import (
 	"strings"
 )
 
-type text []any
-
 type PreEscaped string
 
-func (text PreEscaped) element() {}
+var _ HTMLElement = PreEscaped("")
+var _ HTML = PreEscaped("")
+
+func (text PreEscaped) Render() HTMLElement { return text }
+func (text PreEscaped) element()            {}
 func (text PreEscaped) WriteTo(w io.Writer) (int64, error) {
 	nn, err := w.Write([]byte(text))
 	return int64(nn), err

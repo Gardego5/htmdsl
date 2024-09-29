@@ -7,10 +7,10 @@ import (
 	"github.com/Gardego5/htmdsl/util"
 )
 
-type Page [2]HTMLElement
+type Page [2]HTML
 
 func (page Page) Render() HTMLElement {
-	return Fragment{DOCTYPE,
+	return Fragment{DOCTYPE, Html{
 		Head{
 			Meta{{"charset", "UTF-8"}},
 			Meta{{"name", "viewport"}, {"content", "width=device-width, initial-scale=1.0"}},
@@ -20,7 +20,7 @@ func (page Page) Render() HTMLElement {
 		Body{
 			page[1],
 		},
-	}
+	}}
 }
 
 type (
@@ -38,7 +38,7 @@ const (
 )
 
 func (list List) Render() HTMLElement {
-	items := make([]HTMLElement, len(list.Items))
+	items := make([]HTML, len(list.Items))
 	for i, item := range list.Items {
 		items[i] = Li{
 			util.Match(list.BulletStyle).
@@ -48,12 +48,12 @@ func (list List) Render() HTMLElement {
 			item,
 		}
 	}
-	return Ul{items}
+	return Ul{items}.Render()
 }
 
 // we need to implement the HTMLComponent interface for a type component.
-var _ HTMLComponent = (*Page)(nil)
-var _ HTMLComponent = (*List)(nil)
+var _ HTML = (*Page)(nil)
+var _ HTML = (*List)(nil)
 
 func main() {
 	mux := http.NewServeMux()
@@ -73,9 +73,9 @@ ul {
 				List{
 					BulletStyle: Dash,
 					Items: []string{
-						"Item 1",
-						"Item 2",
-						"Item 3",
+						"hello",
+						"fair",
+						"world",
 					},
 				},
 			},

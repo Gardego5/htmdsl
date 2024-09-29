@@ -11,7 +11,7 @@ type match struct {
 	matched bool
 }
 
-var _ html.HTMLComponent = (*match)(nil)
+var _ html.HTML = (*match)(nil)
 
 func Match(val any) match { return match{val: val} }
 
