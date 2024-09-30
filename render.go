@@ -3,6 +3,7 @@ package html
 import (
 	"fmt"
 	"io"
+	"reflect"
 
 	"github.com/sym01/htmlsanitizer"
 )
@@ -29,48 +30,34 @@ func Render(w io.Writer, child any) (int64, error) {
 	case string:
 		n, err := htmlsanitizer.NewWriter(w).Write([]byte(child))
 		return int64(n), err
-	case *string:
-		if child == nil {
-			return 0, nil
-		} else {
-			return Render(w, *child)
-		}
 	case io.WriterTo:
 		return child.WriteTo(htmlsanitizer.NewWriter(w))
 	case io.Reader:
 		return io.Copy(htmlsanitizer.NewWriter(w), child)
-	case []RenderedHTML:
-		n := int64(0)
-		for _, child := range child {
-			nn, err := Render(w, child)
-			n += nn
-			if err != nil {
-				return n, err
-			}
-		}
-		return n, nil
-	case []HTML:
-		n := int64(0)
-		for _, child := range child {
-			nn, err := Render(w, child)
-			n += nn
-			if err != nil {
-				return n, err
-			}
-		}
-		return n, nil
-	case []any:
-		n := int64(0)
-		for _, child := range child {
-			nn, err := Render(w, child)
-			n += nn
-			if err != nil {
-				return n, err
-			}
-		}
-		return n, nil
 	default:
-		n, err := fmt.Fprint(htmlsanitizer.NewWriter(w), child)
-		return int64(n), err
+		ty := reflect.ValueOf(child)
+		if ty.Kind() == reflect.Slice {
+			if ty.IsNil() {
+				return 0, nil
+			}
+
+			nn := int64(0)
+			for i := 0; i < ty.Len(); i++ {
+				n, err := Render(w, ty.Index(i).Interface())
+				nn += n
+				if err != nil {
+					return nn, err
+				}
+			}
+			return nn, nil
+		} else if ty.Kind() == reflect.Ptr {
+			if ty.IsNil() {
+				return 0, nil
+			}
+			return Render(w, ty.Elem().Interface())
+		} else {
+			n, err := fmt.Fprint(htmlsanitizer.NewWriter(w), child)
+			return int64(n), err
+		}
 	}
 }
