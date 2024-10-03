@@ -50,7 +50,7 @@ func Render(w io.Writer, child any) (int64, error) {
 				}
 			}
 			return nn, nil
-		} else if ty.Kind() == reflect.Ptr {
+		} else if ty.Kind() == reflect.Pointer {
 			if ty.IsNil() {
 				return 0, nil
 			}

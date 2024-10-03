@@ -13,16 +13,16 @@ type match struct {
 
 var _ html.HTML = (*match)(nil)
 
-func Match(val any) match { return match{val: val} }
+func Match(val any) *match { return &match{val: val} }
 
-func (m match) When(val any, then any) match {
+func (m *match) When(val any, then any) *match {
 	if !m.matched && reflect.DeepEqual(m.val, val) {
-		return match{matched: true, val: then}
-	} else {
-		return m
+		m.matched = true
+		m.val = then
 	}
+	return m
 }
-func (m match) Default(then any) any {
+func (m *match) Default(then any) any {
 	if m.matched {
 		return m.val
 	} else {
