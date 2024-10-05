@@ -15,18 +15,24 @@ var _ html.HTML = (*match)(nil)
 
 func Match(val any) *match { return &match{val: val} }
 
-func (m *match) When(val any, then any) *match {
+func (m *match) When(val any, then ...any) *match {
 	if !m.matched && reflect.DeepEqual(m.val, val) {
 		m.matched = true
 		m.val = then
 	}
 	return m
 }
-func (m *match) Default(then any) any {
+func (m *match) Default(then ...any) html.Fragment {
 	if m.matched {
-		return m.val
+		return html.Fragment(m.val.([]any))
 	} else {
 		return then
 	}
 }
-func (m match) Render() html.RenderedHTML { return html.Fragment{m.val} }
+func (m match) Render() html.RenderedHTML {
+	if m.matched {
+		return html.Fragment(m.val.([]any))
+	} else {
+		return html.Fragment{}
+	}
+}
