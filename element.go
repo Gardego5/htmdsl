@@ -4,22 +4,8 @@ import "io"
 
 func Element(tag string, children ...any) RenderedHTML {
 	childAttrs, childEls := make(map[string]string), []any{}
-
-	for _, child := range children {
-		if attrs, ok := child.(Attrs); ok {
-			for _, attr := range attrs {
-				addAttr(childAttrs, attr[0], attr[1])
-			}
-		} else if attr, ok := child.(Attr); ok {
-			addAttr(childAttrs, attr[0], attr[1])
-		} else {
-			addChild(&childEls, child)
-		}
-	}
-
-	el := el{tag, childAttrs, childEls}
-
-	return el
+	addChildren(childAttrs, &childEls, children...)
+	return el{tag, childAttrs, childEls}
 }
 
 func AttrsElement(tag string, attrs ...Attr) RenderedHTML {
@@ -81,6 +67,28 @@ func (e el) WriteTo(w io.Writer) (int64, error) {
 		n, err = w.Write([]byte("</" + e.tag + ">"))
 		nn += int64(n)
 		return nn, err
+	}
+}
+
+func addChildren(
+	attributeElements map[string]string, childrenElements *[]any,
+	children ...any,
+) {
+	for _, child := range children {
+		switch child := child.(type) {
+		case Attr:
+			addAttr(attributeElements, child[0], child[1])
+		case Attrs:
+			for _, attr := range child {
+				addAttr(attributeElements, attr[0], attr[1])
+			}
+		case Fragment:
+			addChildren(attributeElements, childrenElements, child...)
+		case []any:
+			addChildren(attributeElements, childrenElements, child...)
+		default:
+			addChild(childrenElements, child)
+		}
 	}
 }
 
