@@ -1,6 +1,9 @@
 package html
 
-import "io"
+import (
+	"io"
+	"slices"
+)
 
 func Element(tag string, children ...any) RenderedHTML {
 	childAttrs, childEls := make(map[string]string), []any{}
@@ -16,13 +19,11 @@ func AttrsElement(tag string, attrs ...Attr) RenderedHTML {
 	return el
 }
 
-type (
-	el struct {
-		tag      string
-		attrs    map[string]string
-		children Fragment
-	}
-)
+type el struct {
+	tag      string
+	attrs    map[string]string
+	children Fragment
+}
 
 var (
 	_ RenderedHTML = (*el)(nil)
@@ -38,8 +39,14 @@ func (e el) WriteTo(w io.Writer) (int64, error) {
 		return nn, err
 	}
 
-	for key, value := range e.attrs {
-		n, err = w.Write([]byte(" " + key + "=\"" + value + "\""))
+	keys := make([]string, 0, len(e.attrs))
+	for key := range e.attrs {
+		keys = append(keys, key)
+	}
+	slices.Sort(keys)
+
+	for _, key := range keys {
+		n, err = w.Write([]byte(" " + key + "=\"" + e.attrs[key] + "\""))
 		nn += int64(n)
 		if err != nil {
 			return nn, err
