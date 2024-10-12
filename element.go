@@ -1,6 +1,8 @@
 package html
 
 import (
+	"fmt"
+	"html"
 	"io"
 	"slices"
 )
@@ -33,7 +35,7 @@ var (
 func (e el) Render() RenderedHTML { return e }
 func (e el) WriteTo(w io.Writer) (int64, error) {
 	nn := int64(0)
-	n, err := w.Write([]byte("<" + e.tag))
+	n, err := fmt.Fprintf(w, "<%s", e.tag)
 	nn += int64(n)
 	if err != nil {
 		return nn, err
@@ -46,7 +48,7 @@ func (e el) WriteTo(w io.Writer) (int64, error) {
 	slices.Sort(keys)
 
 	for _, key := range keys {
-		n, err = w.Write([]byte(" " + key + "=\"" + e.attrs[key] + "\""))
+		n, err = fmt.Fprintf(w, ` %s="%s"`, html.EscapeString(key), html.EscapeString(e.attrs[key]))
 		nn += int64(n)
 		if err != nil {
 			return nn, err
@@ -54,14 +56,14 @@ func (e el) WriteTo(w io.Writer) (int64, error) {
 	}
 
 	if e.children == nil {
-		n, err = w.Write([]byte("/>"))
+		n, err = fmt.Fprint(w, `/>`)
 		nn += int64(n)
 		if err != nil {
 			return nn, err
 		}
 		return nn + int64(n), nil
 	} else {
-		n, err = w.Write([]byte(">"))
+		n, err = fmt.Fprint(w, `>`)
 		nn += int64(n)
 		if err != nil {
 			return nn, err
@@ -71,7 +73,7 @@ func (e el) WriteTo(w io.Writer) (int64, error) {
 		if err != nil {
 			return nn, err
 		}
-		n, err = w.Write([]byte("</" + e.tag + ">"))
+		n, err = fmt.Fprintf(w, `</%s>`, e.tag)
 		nn += int64(n)
 		return nn, err
 	}

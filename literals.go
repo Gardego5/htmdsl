@@ -1,6 +1,9 @@
 package html
 
-import "io"
+import (
+	"fmt"
+	"io"
+)
 
 type literal string
 
@@ -13,6 +16,6 @@ var (
 
 func (lit literal) Render() RenderedHTML { return lit }
 func (lit literal) WriteTo(w io.Writer) (int64, error) {
-	n, err := w.Write([]byte(lit))
+	n, err := fmt.Fprint(w, lit)
 	return int64(n), err
 }

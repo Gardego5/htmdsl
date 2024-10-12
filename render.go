@@ -84,7 +84,7 @@ func Render(w io.Writer, child any) (int64, error) {
 	case func(context.Context) any:
 		return Render(cw, child(cw))
 	case string:
-		n, err := htmlsanitizer.NewWriter(cw).Write([]byte(child))
+		n, err := fmt.Fprint(htmlsanitizer.NewWriter(cw), child)
 		return int64(n), err
 	case io.WriterTo:
 		return child.WriteTo(htmlsanitizer.NewWriter(cw))
