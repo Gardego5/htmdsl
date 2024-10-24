@@ -10,11 +10,9 @@ type Fragment []any
 var (
 	_ RenderedHTML = Fragment{}
 	_ HTML         = Fragment{}
-	_ ContextHTML  = Fragment{}
 )
 
-func (f Fragment) RenderWithContext(context.Context) RenderedHTML { return f }
-func (f Fragment) Render() RenderedHTML                           { return f }
+func (f Fragment) Render(context.Context) RenderedHTML { return f }
 func (f Fragment) WriteTo(w io.Writer) (int64, error) {
 	var n int64
 	for _, a := range f {

@@ -2,361 +2,363 @@
 
 package html
 
+import "context"
+
 
 // The `a` HTML element (or *anchor* element), with its `href`
 // attribute, creates a hyperlink to webpages, files, email
 // addresses, locations in the same page, or anything else a URL
 // can address.
 type A []any
-func (tag A) Render() RenderedHTML { return Element("a", tag...) }
+func (tag A) Render(context.Context) RenderedHTML { return Element("a", tag...) }
 
 type Abbr []any
-func (tag Abbr) Render() RenderedHTML { return Element("abbr", tag...) }
+func (tag Abbr) Render(context.Context) RenderedHTML { return Element("abbr", tag...) }
 
 type Address []any
-func (tag Address) Render() RenderedHTML { return Element("address", tag...) }
+func (tag Address) Render(context.Context) RenderedHTML { return Element("address", tag...) }
 
 type Area Attrs
-func (tag Area) Render() RenderedHTML { return AttrsElement("area", tag...) }
+func (tag Area) Render(context.Context) RenderedHTML { return AttrsElement("area", tag...) }
 
 type Article []any
-func (tag Article) Render() RenderedHTML { return Element("article", tag...) }
+func (tag Article) Render(context.Context) RenderedHTML { return Element("article", tag...) }
 
 type Aside []any
-func (tag Aside) Render() RenderedHTML { return Element("aside", tag...) }
+func (tag Aside) Render(context.Context) RenderedHTML { return Element("aside", tag...) }
 
 type Audio []any
-func (tag Audio) Render() RenderedHTML { return Element("audio", tag...) }
+func (tag Audio) Render(context.Context) RenderedHTML { return Element("audio", tag...) }
 
 type B []any
-func (tag B) Render() RenderedHTML { return Element("b", tag...) }
+func (tag B) Render(context.Context) RenderedHTML { return Element("b", tag...) }
 
 type Base Attrs
-func (tag Base) Render() RenderedHTML { return AttrsElement("base", tag...) }
+func (tag Base) Render(context.Context) RenderedHTML { return AttrsElement("base", tag...) }
 
 type Bdi []any
-func (tag Bdi) Render() RenderedHTML { return Element("bdi", tag...) }
+func (tag Bdi) Render(context.Context) RenderedHTML { return Element("bdi", tag...) }
 
 type Bdo []any
-func (tag Bdo) Render() RenderedHTML { return Element("bdo", tag...) }
+func (tag Bdo) Render(context.Context) RenderedHTML { return Element("bdo", tag...) }
 
 type Blockquote []any
-func (tag Blockquote) Render() RenderedHTML { return Element("blockquote", tag...) }
+func (tag Blockquote) Render(context.Context) RenderedHTML { return Element("blockquote", tag...) }
 
 type Body []any
-func (tag Body) Render() RenderedHTML { return Element("body", tag...) }
+func (tag Body) Render(context.Context) RenderedHTML { return Element("body", tag...) }
 
 type Br Attrs
-func (tag Br) Render() RenderedHTML { return AttrsElement("br", tag...) }
+func (tag Br) Render(context.Context) RenderedHTML { return AttrsElement("br", tag...) }
 
 type Button []any
-func (tag Button) Render() RenderedHTML { return Element("button", tag...) }
+func (tag Button) Render(context.Context) RenderedHTML { return Element("button", tag...) }
 
 type Canvas []any
-func (tag Canvas) Render() RenderedHTML { return Element("canvas", tag...) }
+func (tag Canvas) Render(context.Context) RenderedHTML { return Element("canvas", tag...) }
 
 type Caption []any
-func (tag Caption) Render() RenderedHTML { return Element("caption", tag...) }
+func (tag Caption) Render(context.Context) RenderedHTML { return Element("caption", tag...) }
 
 type Cite []any
-func (tag Cite) Render() RenderedHTML { return Element("cite", tag...) }
+func (tag Cite) Render(context.Context) RenderedHTML { return Element("cite", tag...) }
 
 type Code []any
-func (tag Code) Render() RenderedHTML { return Element("code", tag...) }
+func (tag Code) Render(context.Context) RenderedHTML { return Element("code", tag...) }
 
 type Col Attrs
-func (tag Col) Render() RenderedHTML { return AttrsElement("col", tag...) }
+func (tag Col) Render(context.Context) RenderedHTML { return AttrsElement("col", tag...) }
 
 type Colgroup []any
-func (tag Colgroup) Render() RenderedHTML { return Element("colgroup", tag...) }
+func (tag Colgroup) Render(context.Context) RenderedHTML { return Element("colgroup", tag...) }
 
 type Data []any
-func (tag Data) Render() RenderedHTML { return Element("data", tag...) }
+func (tag Data) Render(context.Context) RenderedHTML { return Element("data", tag...) }
 
 type Datalist []any
-func (tag Datalist) Render() RenderedHTML { return Element("datalist", tag...) }
+func (tag Datalist) Render(context.Context) RenderedHTML { return Element("datalist", tag...) }
 
 type Dd []any
-func (tag Dd) Render() RenderedHTML { return Element("dd", tag...) }
+func (tag Dd) Render(context.Context) RenderedHTML { return Element("dd", tag...) }
 
 type Del []any
-func (tag Del) Render() RenderedHTML { return Element("del", tag...) }
+func (tag Del) Render(context.Context) RenderedHTML { return Element("del", tag...) }
 
 type Details []any
-func (tag Details) Render() RenderedHTML { return Element("details", tag...) }
+func (tag Details) Render(context.Context) RenderedHTML { return Element("details", tag...) }
 
 type Dfn []any
-func (tag Dfn) Render() RenderedHTML { return Element("dfn", tag...) }
+func (tag Dfn) Render(context.Context) RenderedHTML { return Element("dfn", tag...) }
 
 type Dialog []any
-func (tag Dialog) Render() RenderedHTML { return Element("dialog", tag...) }
+func (tag Dialog) Render(context.Context) RenderedHTML { return Element("dialog", tag...) }
 
 type Div []any
-func (tag Div) Render() RenderedHTML { return Element("div", tag...) }
+func (tag Div) Render(context.Context) RenderedHTML { return Element("div", tag...) }
 
 type Dl []any
-func (tag Dl) Render() RenderedHTML { return Element("dl", tag...) }
+func (tag Dl) Render(context.Context) RenderedHTML { return Element("dl", tag...) }
 
 type Dt []any
-func (tag Dt) Render() RenderedHTML { return Element("dt", tag...) }
+func (tag Dt) Render(context.Context) RenderedHTML { return Element("dt", tag...) }
 
 type Em []any
-func (tag Em) Render() RenderedHTML { return Element("em", tag...) }
+func (tag Em) Render(context.Context) RenderedHTML { return Element("em", tag...) }
 
 type Embed Attrs
-func (tag Embed) Render() RenderedHTML { return AttrsElement("embed", tag...) }
+func (tag Embed) Render(context.Context) RenderedHTML { return AttrsElement("embed", tag...) }
 
 type Fieldset []any
-func (tag Fieldset) Render() RenderedHTML { return Element("fieldset", tag...) }
+func (tag Fieldset) Render(context.Context) RenderedHTML { return Element("fieldset", tag...) }
 
 type Figcaption []any
-func (tag Figcaption) Render() RenderedHTML { return Element("figcaption", tag...) }
+func (tag Figcaption) Render(context.Context) RenderedHTML { return Element("figcaption", tag...) }
 
 type Figure []any
-func (tag Figure) Render() RenderedHTML { return Element("figure", tag...) }
+func (tag Figure) Render(context.Context) RenderedHTML { return Element("figure", tag...) }
 
 type Footer []any
-func (tag Footer) Render() RenderedHTML { return Element("footer", tag...) }
+func (tag Footer) Render(context.Context) RenderedHTML { return Element("footer", tag...) }
 
 type Form []any
-func (tag Form) Render() RenderedHTML { return Element("form", tag...) }
+func (tag Form) Render(context.Context) RenderedHTML { return Element("form", tag...) }
 
 type H1 []any
-func (tag H1) Render() RenderedHTML { return Element("h1", tag...) }
+func (tag H1) Render(context.Context) RenderedHTML { return Element("h1", tag...) }
 
 type H2 []any
-func (tag H2) Render() RenderedHTML { return Element("h2", tag...) }
+func (tag H2) Render(context.Context) RenderedHTML { return Element("h2", tag...) }
 
 type H3 []any
-func (tag H3) Render() RenderedHTML { return Element("h3", tag...) }
+func (tag H3) Render(context.Context) RenderedHTML { return Element("h3", tag...) }
 
 type H4 []any
-func (tag H4) Render() RenderedHTML { return Element("h4", tag...) }
+func (tag H4) Render(context.Context) RenderedHTML { return Element("h4", tag...) }
 
 type H5 []any
-func (tag H5) Render() RenderedHTML { return Element("h5", tag...) }
+func (tag H5) Render(context.Context) RenderedHTML { return Element("h5", tag...) }
 
 type H6 []any
-func (tag H6) Render() RenderedHTML { return Element("h6", tag...) }
+func (tag H6) Render(context.Context) RenderedHTML { return Element("h6", tag...) }
 
 type Head []any
-func (tag Head) Render() RenderedHTML { return Element("head", tag...) }
+func (tag Head) Render(context.Context) RenderedHTML { return Element("head", tag...) }
 
 type Header []any
-func (tag Header) Render() RenderedHTML { return Element("header", tag...) }
+func (tag Header) Render(context.Context) RenderedHTML { return Element("header", tag...) }
 
 type Hgroup []any
-func (tag Hgroup) Render() RenderedHTML { return Element("hgroup", tag...) }
+func (tag Hgroup) Render(context.Context) RenderedHTML { return Element("hgroup", tag...) }
 
 type Hr Attrs
-func (tag Hr) Render() RenderedHTML { return AttrsElement("hr", tag...) }
+func (tag Hr) Render(context.Context) RenderedHTML { return AttrsElement("hr", tag...) }
 
 type Html []any
-func (tag Html) Render() RenderedHTML { return Element("html", tag...) }
+func (tag Html) Render(context.Context) RenderedHTML { return Element("html", tag...) }
 
 type I []any
-func (tag I) Render() RenderedHTML { return Element("i", tag...) }
+func (tag I) Render(context.Context) RenderedHTML { return Element("i", tag...) }
 
 type Iframe []any
-func (tag Iframe) Render() RenderedHTML { return Element("iframe", tag...) }
+func (tag Iframe) Render(context.Context) RenderedHTML { return Element("iframe", tag...) }
 
 type Img Attrs
-func (tag Img) Render() RenderedHTML { return AttrsElement("img", tag...) }
+func (tag Img) Render(context.Context) RenderedHTML { return AttrsElement("img", tag...) }
 
 type Input Attrs
-func (tag Input) Render() RenderedHTML { return AttrsElement("input", tag...) }
+func (tag Input) Render(context.Context) RenderedHTML { return AttrsElement("input", tag...) }
 
 type Ins []any
-func (tag Ins) Render() RenderedHTML { return Element("ins", tag...) }
+func (tag Ins) Render(context.Context) RenderedHTML { return Element("ins", tag...) }
 
 type Kbd []any
-func (tag Kbd) Render() RenderedHTML { return Element("kbd", tag...) }
+func (tag Kbd) Render(context.Context) RenderedHTML { return Element("kbd", tag...) }
 
 type Label []any
-func (tag Label) Render() RenderedHTML { return Element("label", tag...) }
+func (tag Label) Render(context.Context) RenderedHTML { return Element("label", tag...) }
 
 type Legend []any
-func (tag Legend) Render() RenderedHTML { return Element("legend", tag...) }
+func (tag Legend) Render(context.Context) RenderedHTML { return Element("legend", tag...) }
 
 type Li []any
-func (tag Li) Render() RenderedHTML { return Element("li", tag...) }
+func (tag Li) Render(context.Context) RenderedHTML { return Element("li", tag...) }
 
 type Link Attrs
-func (tag Link) Render() RenderedHTML { return AttrsElement("link", tag...) }
+func (tag Link) Render(context.Context) RenderedHTML { return AttrsElement("link", tag...) }
 
 type Main []any
-func (tag Main) Render() RenderedHTML { return Element("main", tag...) }
+func (tag Main) Render(context.Context) RenderedHTML { return Element("main", tag...) }
 
 type Map []any
-func (tag Map) Render() RenderedHTML { return Element("map", tag...) }
+func (tag Map) Render(context.Context) RenderedHTML { return Element("map", tag...) }
 
 type Mark []any
-func (tag Mark) Render() RenderedHTML { return Element("mark", tag...) }
+func (tag Mark) Render(context.Context) RenderedHTML { return Element("mark", tag...) }
 
 type Math []any
-func (tag Math) Render() RenderedHTML { return Element("math", tag...) }
+func (tag Math) Render(context.Context) RenderedHTML { return Element("math", tag...) }
 
 type Menu []any
-func (tag Menu) Render() RenderedHTML { return Element("menu", tag...) }
+func (tag Menu) Render(context.Context) RenderedHTML { return Element("menu", tag...) }
 
 type Menuitem Attrs
-func (tag Menuitem) Render() RenderedHTML { return AttrsElement("menuitem", tag...) }
+func (tag Menuitem) Render(context.Context) RenderedHTML { return AttrsElement("menuitem", tag...) }
 
 type Meta Attrs
-func (tag Meta) Render() RenderedHTML { return AttrsElement("meta", tag...) }
+func (tag Meta) Render(context.Context) RenderedHTML { return AttrsElement("meta", tag...) }
 
 type Meter []any
-func (tag Meter) Render() RenderedHTML { return Element("meter", tag...) }
+func (tag Meter) Render(context.Context) RenderedHTML { return Element("meter", tag...) }
 
 type Nav []any
-func (tag Nav) Render() RenderedHTML { return Element("nav", tag...) }
+func (tag Nav) Render(context.Context) RenderedHTML { return Element("nav", tag...) }
 
 type Noscript []any
-func (tag Noscript) Render() RenderedHTML { return Element("noscript", tag...) }
+func (tag Noscript) Render(context.Context) RenderedHTML { return Element("noscript", tag...) }
 
 type Object []any
-func (tag Object) Render() RenderedHTML { return Element("object", tag...) }
+func (tag Object) Render(context.Context) RenderedHTML { return Element("object", tag...) }
 
 type Ol []any
-func (tag Ol) Render() RenderedHTML { return Element("ol", tag...) }
+func (tag Ol) Render(context.Context) RenderedHTML { return Element("ol", tag...) }
 
 type Optgroup []any
-func (tag Optgroup) Render() RenderedHTML { return Element("optgroup", tag...) }
+func (tag Optgroup) Render(context.Context) RenderedHTML { return Element("optgroup", tag...) }
 
 type Option []any
-func (tag Option) Render() RenderedHTML { return Element("option", tag...) }
+func (tag Option) Render(context.Context) RenderedHTML { return Element("option", tag...) }
 
 type Output []any
-func (tag Output) Render() RenderedHTML { return Element("output", tag...) }
+func (tag Output) Render(context.Context) RenderedHTML { return Element("output", tag...) }
 
 type P []any
-func (tag P) Render() RenderedHTML { return Element("p", tag...) }
+func (tag P) Render(context.Context) RenderedHTML { return Element("p", tag...) }
 
 type Param Attrs
-func (tag Param) Render() RenderedHTML { return AttrsElement("param", tag...) }
+func (tag Param) Render(context.Context) RenderedHTML { return AttrsElement("param", tag...) }
 
 type Picture []any
-func (tag Picture) Render() RenderedHTML { return Element("picture", tag...) }
+func (tag Picture) Render(context.Context) RenderedHTML { return Element("picture", tag...) }
 
 type Pre []any
-func (tag Pre) Render() RenderedHTML { return Element("pre", tag...) }
+func (tag Pre) Render(context.Context) RenderedHTML { return Element("pre", tag...) }
 
 type Progress []any
-func (tag Progress) Render() RenderedHTML { return Element("progress", tag...) }
+func (tag Progress) Render(context.Context) RenderedHTML { return Element("progress", tag...) }
 
 type Q []any
-func (tag Q) Render() RenderedHTML { return Element("q", tag...) }
+func (tag Q) Render(context.Context) RenderedHTML { return Element("q", tag...) }
 
 type Rb []any
-func (tag Rb) Render() RenderedHTML { return Element("rb", tag...) }
+func (tag Rb) Render(context.Context) RenderedHTML { return Element("rb", tag...) }
 
 type Rp []any
-func (tag Rp) Render() RenderedHTML { return Element("rp", tag...) }
+func (tag Rp) Render(context.Context) RenderedHTML { return Element("rp", tag...) }
 
 type Rt []any
-func (tag Rt) Render() RenderedHTML { return Element("rt", tag...) }
+func (tag Rt) Render(context.Context) RenderedHTML { return Element("rt", tag...) }
 
 type Rtc []any
-func (tag Rtc) Render() RenderedHTML { return Element("rtc", tag...) }
+func (tag Rtc) Render(context.Context) RenderedHTML { return Element("rtc", tag...) }
 
 type Ruby []any
-func (tag Ruby) Render() RenderedHTML { return Element("ruby", tag...) }
+func (tag Ruby) Render(context.Context) RenderedHTML { return Element("ruby", tag...) }
 
 type S []any
-func (tag S) Render() RenderedHTML { return Element("s", tag...) }
+func (tag S) Render(context.Context) RenderedHTML { return Element("s", tag...) }
 
 type Samp []any
-func (tag Samp) Render() RenderedHTML { return Element("samp", tag...) }
+func (tag Samp) Render(context.Context) RenderedHTML { return Element("samp", tag...) }
 
 type Script []any
-func (tag Script) Render() RenderedHTML { return Element("script", tag...) }
+func (tag Script) Render(context.Context) RenderedHTML { return Element("script", tag...) }
 
 type Search []any
-func (tag Search) Render() RenderedHTML { return Element("search", tag...) }
+func (tag Search) Render(context.Context) RenderedHTML { return Element("search", tag...) }
 
 type Section []any
-func (tag Section) Render() RenderedHTML { return Element("section", tag...) }
+func (tag Section) Render(context.Context) RenderedHTML { return Element("section", tag...) }
 
 type Select []any
-func (tag Select) Render() RenderedHTML { return Element("select", tag...) }
+func (tag Select) Render(context.Context) RenderedHTML { return Element("select", tag...) }
 
 type Slot []any
-func (tag Slot) Render() RenderedHTML { return Element("slot", tag...) }
+func (tag Slot) Render(context.Context) RenderedHTML { return Element("slot", tag...) }
 
 type Small []any
-func (tag Small) Render() RenderedHTML { return Element("small", tag...) }
+func (tag Small) Render(context.Context) RenderedHTML { return Element("small", tag...) }
 
 type Source Attrs
-func (tag Source) Render() RenderedHTML { return AttrsElement("source", tag...) }
+func (tag Source) Render(context.Context) RenderedHTML { return AttrsElement("source", tag...) }
 
 type Span []any
-func (tag Span) Render() RenderedHTML { return Element("span", tag...) }
+func (tag Span) Render(context.Context) RenderedHTML { return Element("span", tag...) }
 
 type Strong []any
-func (tag Strong) Render() RenderedHTML { return Element("strong", tag...) }
+func (tag Strong) Render(context.Context) RenderedHTML { return Element("strong", tag...) }
 
 type Style []any
-func (tag Style) Render() RenderedHTML { return Element("style", tag...) }
+func (tag Style) Render(context.Context) RenderedHTML { return Element("style", tag...) }
 
 type Sub []any
-func (tag Sub) Render() RenderedHTML { return Element("sub", tag...) }
+func (tag Sub) Render(context.Context) RenderedHTML { return Element("sub", tag...) }
 
 type Summary []any
-func (tag Summary) Render() RenderedHTML { return Element("summary", tag...) }
+func (tag Summary) Render(context.Context) RenderedHTML { return Element("summary", tag...) }
 
 type Sup []any
-func (tag Sup) Render() RenderedHTML { return Element("sup", tag...) }
+func (tag Sup) Render(context.Context) RenderedHTML { return Element("sup", tag...) }
 
 type Svg []any
-func (tag Svg) Render() RenderedHTML { return Element("svg", tag...) }
+func (tag Svg) Render(context.Context) RenderedHTML { return Element("svg", tag...) }
 
 type Table []any
-func (tag Table) Render() RenderedHTML { return Element("table", tag...) }
+func (tag Table) Render(context.Context) RenderedHTML { return Element("table", tag...) }
 
 type Tbody []any
-func (tag Tbody) Render() RenderedHTML { return Element("tbody", tag...) }
+func (tag Tbody) Render(context.Context) RenderedHTML { return Element("tbody", tag...) }
 
 type Td []any
-func (tag Td) Render() RenderedHTML { return Element("td", tag...) }
+func (tag Td) Render(context.Context) RenderedHTML { return Element("td", tag...) }
 
 type Template []any
-func (tag Template) Render() RenderedHTML { return Element("template", tag...) }
+func (tag Template) Render(context.Context) RenderedHTML { return Element("template", tag...) }
 
 type Textarea []any
-func (tag Textarea) Render() RenderedHTML { return Element("textarea", tag...) }
+func (tag Textarea) Render(context.Context) RenderedHTML { return Element("textarea", tag...) }
 
 type Tfoot []any
-func (tag Tfoot) Render() RenderedHTML { return Element("tfoot", tag...) }
+func (tag Tfoot) Render(context.Context) RenderedHTML { return Element("tfoot", tag...) }
 
 type Th []any
-func (tag Th) Render() RenderedHTML { return Element("th", tag...) }
+func (tag Th) Render(context.Context) RenderedHTML { return Element("th", tag...) }
 
 type Thead []any
-func (tag Thead) Render() RenderedHTML { return Element("thead", tag...) }
+func (tag Thead) Render(context.Context) RenderedHTML { return Element("thead", tag...) }
 
 type Time []any
-func (tag Time) Render() RenderedHTML { return Element("time", tag...) }
+func (tag Time) Render(context.Context) RenderedHTML { return Element("time", tag...) }
 
 type Title []any
-func (tag Title) Render() RenderedHTML { return Element("title", tag...) }
+func (tag Title) Render(context.Context) RenderedHTML { return Element("title", tag...) }
 
 type Tr []any
-func (tag Tr) Render() RenderedHTML { return Element("tr", tag...) }
+func (tag Tr) Render(context.Context) RenderedHTML { return Element("tr", tag...) }
 
 type Track Attrs
-func (tag Track) Render() RenderedHTML { return AttrsElement("track", tag...) }
+func (tag Track) Render(context.Context) RenderedHTML { return AttrsElement("track", tag...) }
 
 type U []any
-func (tag U) Render() RenderedHTML { return Element("u", tag...) }
+func (tag U) Render(context.Context) RenderedHTML { return Element("u", tag...) }
 
 type Ul []any
-func (tag Ul) Render() RenderedHTML { return Element("ul", tag...) }
+func (tag Ul) Render(context.Context) RenderedHTML { return Element("ul", tag...) }
 
 type Var []any
-func (tag Var) Render() RenderedHTML { return Element("var", tag...) }
+func (tag Var) Render(context.Context) RenderedHTML { return Element("var", tag...) }
 
 type Video []any
-func (tag Video) Render() RenderedHTML { return Element("video", tag...) }
+func (tag Video) Render(context.Context) RenderedHTML { return Element("video", tag...) }
 
 type Wbr Attrs
-func (tag Wbr) Render() RenderedHTML { return AttrsElement("wbr", tag...) }
+func (tag Wbr) Render(context.Context) RenderedHTML { return AttrsElement("wbr", tag...) }

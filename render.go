@@ -5,26 +5,20 @@ import (
 	"fmt"
 	"io"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/sym01/htmlsanitizer"
 )
 
 type (
-	HTML        interface{ Render() RenderedHTML }
-	ContextHTML interface {
-		HTML
-		RenderWithContext(c context.Context) RenderedHTML
-	}
 	RenderedHTML interface{ io.WriterTo }
-)
-
-func is[T any](val any) bool { _, ok := val.(T); return ok }
-
-type (
+	HTML         interface {
+		Render(context.Context) RenderedHTML
+	}
 	contextWriter struct {
-		w io.Writer
-		c context.Context
+		writer  io.Writer
+		context context.Context
 	}
 	ContextWriter interface {
 		io.Writer
@@ -34,15 +28,23 @@ type (
 
 var _ ContextWriter = (*contextWriter)(nil)
 
-func (w *contextWriter) Write(p []byte) (int, error)             { return w.w.Write(p) }
-func (w *contextWriter) Value(key interface{}) interface{}       { return w.c.Value(key) }
-func (w *contextWriter) Deadline() (deadline time.Time, ok bool) { return w.c.Deadline() }
-func (w *contextWriter) Done() <-chan struct{}                   { return w.c.Done() }
-func (w *contextWriter) Err() error                              { return w.c.Err() }
+func (w *contextWriter) Write(p []byte) (int, error)             { return w.writer.Write(p) }
+func (w *contextWriter) Value(key interface{}) interface{}       { return w.context.Value(key) }
+func (w *contextWriter) Deadline() (deadline time.Time, ok bool) { return w.context.Deadline() }
+func (w *contextWriter) Done() <-chan struct{}                   { return w.context.Done() }
+func (w *contextWriter) Err() error                              { return w.context.Err() }
 
-func RenderWithContext(w io.Writer, c context.Context, child any) (int64, error) {
-	return Render(&contextWriter{w: w, c: c}, child)
+func RenderContext(w io.Writer, c context.Context, child any) (int64, error) {
+	return Render(&contextWriter{writer: w, context: c}, child)
 }
+
+var htmlEscaper = strings.NewReplacer(
+	`&`, "&amp;",
+	`'`, "&#39;", // "&#39;" is shorter than "&apos;" and apos was not in HTML until HTML5.
+	`<`, "&lt;",
+	`>`, "&gt;",
+	`"`, "&#34;", // "&#34;" is shorter than "&quot;".
+)
 
 func Render(w io.Writer, child any) (int64, error) {
 	if child == nil {
@@ -51,7 +53,7 @@ func Render(w io.Writer, child any) (int64, error) {
 
 	cw, ok := w.(ContextWriter)
 	if !ok {
-		cw = &contextWriter{w: w, c: context.Background()}
+		cw = &contextWriter{writer: w, context: context.Background()}
 	}
 
 	switch child := child.(type) {
@@ -67,14 +69,8 @@ func Render(w io.Writer, child any) (int64, error) {
 		return nn, nil
 	case RenderedHTML:
 		return child.WriteTo(cw)
-	case ContextHTML:
-		if child := child.RenderWithContext(cw); child != nil {
-			return child.WriteTo(cw)
-		} else {
-			return 0, nil
-		}
 	case HTML:
-		if child := child.Render(); child != nil {
+		if child := child.Render(cw); child != nil {
 			return child.WriteTo(cw)
 		} else {
 			return 0, nil
@@ -84,10 +80,8 @@ func Render(w io.Writer, child any) (int64, error) {
 	case func(context.Context) any:
 		return Render(cw, child(cw))
 	case string:
-		n, err := fmt.Fprint(htmlsanitizer.NewWriter(cw), child)
+		n, err := htmlEscaper.WriteString(htmlsanitizer.NewWriter(cw), child)
 		return int64(n), err
-	case io.WriterTo:
-		return child.WriteTo(htmlsanitizer.NewWriter(cw))
 	case io.Reader:
 		return io.Copy(htmlsanitizer.NewWriter(cw), child)
 	default:

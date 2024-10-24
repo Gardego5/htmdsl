@@ -1,6 +1,7 @@
 package util
 
 import (
+	"context"
 	"reflect"
 
 	html "github.com/Gardego5/htmdsl"
@@ -29,7 +30,7 @@ func (m *match) Default(then ...any) html.Fragment {
 		return then
 	}
 }
-func (m match) Render() html.RenderedHTML {
+func (m match) Render(context.Context) html.RenderedHTML {
 	if m.matched {
 		return html.Fragment(m.val.([]any))
 	} else {

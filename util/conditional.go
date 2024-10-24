@@ -1,6 +1,10 @@
 package util
 
-import html "github.com/Gardego5/htmdsl"
+import (
+	"context"
+
+	html "github.com/Gardego5/htmdsl"
+)
 
 type conditional struct {
 	cond bool
@@ -42,7 +46,7 @@ func (i *conditional) ElseIf(cond bool, then ...any) *conditional {
 
 	return i
 }
-func (i *conditional) Render() html.RenderedHTML {
+func (i *conditional) Render(context.Context) html.RenderedHTML {
 	if i.cond {
 		return i.then
 	}

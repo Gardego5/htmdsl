@@ -1,6 +1,7 @@
 package html
 
 import (
+	"context"
 	"fmt"
 	"html"
 	"io"
@@ -32,7 +33,7 @@ var (
 	_ HTML         = (*el)(nil)
 )
 
-func (e el) Render() RenderedHTML { return e }
+func (e el) Render(context.Context) RenderedHTML { return e }
 func (e el) WriteTo(w io.Writer) (int64, error) {
 	nn := int64(0)
 	n, err := fmt.Fprintf(w, "<%s", e.tag)

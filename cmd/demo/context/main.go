@@ -14,7 +14,9 @@ const keySession key = iota
 
 func sessionMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		next.ServeHTTP(w, r.WithContext(context.WithValue(r.Context(), keySession, "session-id")))
+		ctx := r.Context()
+		ctx = context.WithValue(ctx, keySession, "session-id")
+		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
 
@@ -28,21 +30,18 @@ func getSessionId(c context.Context) string {
 
 type SessionComponent struct{}
 
-var _ ContextHTML = (*SessionComponent)(nil)
-
-func (c SessionComponent) Render() RenderedHTML { return c.RenderWithContext(nil) }
-func (SessionComponent) RenderWithContext(c context.Context) RenderedHTML {
+func (SessionComponent) Render(ctx context.Context) RenderedHTML {
 	return P{
 		"Session ID: ",
-		If(c != nil, func() any { return getSessionId(c) }).Else("nil"),
-	}.Render()
+		If(ctx != nil, func() any { return getSessionId(ctx) }).Else("nil"),
+	}.Render(ctx)
 }
 
 func main() {
 	mux := http.NewServeMux()
 
 	mux.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		RenderWithContext(w, r.Context(), Fragment{DOCTYPE, Html{
+		RenderContext(w, r.Context(), Fragment{DOCTYPE, Html{
 			Head{},
 			Body{
 				SessionComponent{},

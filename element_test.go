@@ -2,6 +2,7 @@ package html_test
 
 import (
 	"bytes"
+	"context"
 	"testing"
 
 	. "github.com/Gardego5/htmdsl"
@@ -10,7 +11,8 @@ import (
 func TestElement(t *testing.T) {
 	for _, test := range []struct {
 		name, expected string
-		result         RenderedHTML
+		result         any
+		context        context.Context
 	}{
 		{
 			name:     "div with text",
@@ -50,7 +52,7 @@ func TestElement(t *testing.T) {
 		{
 			name:     "input",
 			expected: "<input type=\"text\" value=\"hello\"/>",
-			result:   Input{{"type", "text"}, {"value", "hello"}}.Render(),
+			result:   Input{{"type", "text"}, {"value", "hello"}},
 		},
 		{
 			name:     "defined tags: a, b, button, div, h1, h2, h3, h4, h5, h6, img, input, label, li, ol, p, span, ul",
@@ -74,7 +76,7 @@ func TestElement(t *testing.T) {
 					Class("container"), // hoisted
 					Div{Class("inner"), "hello"},
 				},
-			}.Render(),
+			},
 		},
 		{
 			name:     "invalid hoisting",
@@ -84,12 +86,24 @@ func TestElement(t *testing.T) {
 				Div{Class("inner"), "hello"},
 			},
 		},
+		{
+			name:     "context value",
+			expected: "<div>context-data</div>",
+			result:   Div{func(ctx context.Context) any { return "context-data" }},
+			context:  context.WithValue(context.Background(), "key", "context-data"),
+		},
 	} {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
+
+			ctx := test.context
+			if ctx == nil {
+				ctx = context.Background()
+			}
+
 			buf := new(bytes.Buffer)
-			_, err := test.result.WriteTo(buf)
+			_, err := RenderContext(buf, ctx, test.result)
 			if err != nil {
 				t.Fatal(err)
 			}

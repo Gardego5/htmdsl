@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net/http"
 
@@ -10,7 +11,7 @@ import (
 
 type Page [2]HTML
 
-func (page Page) Render() RenderedHTML {
+func (page Page) Render(context.Context) RenderedHTML {
 	return Fragment{DOCTYPE, Html{
 		Head{
 			Meta{{"charset", "UTF-8"}},
@@ -38,7 +39,7 @@ const (
 	Plus
 )
 
-func (list List) Render() RenderedHTML {
+func (list List) Render(ctx context.Context) RenderedHTML {
 	items := make([]HTML, len(list.Items))
 	for i, item := range list.Items {
 		items[i] = Li{
@@ -49,7 +50,7 @@ func (list List) Render() RenderedHTML {
 			item,
 		}
 	}
-	return Ul{items}.Render()
+	return Ul{items}.Render(ctx)
 }
 
 // we need to implement the HTMLComponent interface for a type component.

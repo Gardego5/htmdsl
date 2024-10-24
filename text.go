@@ -1,6 +1,7 @@
 package html
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"strings"
@@ -13,7 +14,7 @@ var (
 	_ HTML         = PreEscaped("")
 )
 
-func (text PreEscaped) Render() RenderedHTML { return text }
+func (text PreEscaped) Render(context.Context) RenderedHTML { return text }
 func (text PreEscaped) element()             {}
 func (text PreEscaped) WriteTo(w io.Writer) (int64, error) {
 	nn, err := fmt.Fprint(w, text)
