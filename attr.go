@@ -2,9 +2,7 @@ package html
 
 import "strings"
 
-type (
-	Attr  [2]string
-	Attrs []Attr
-)
+type Attrs map[string]any
 
-func Class(list ...string) Attr { return Attr{"class", strings.Join(list, " ")} }
+func Class(list ...string) Attrs { return Attrs{"class": strings.Join(list, " ")} }
+func Id(id string) Attrs         { return Attrs{"id": id} }

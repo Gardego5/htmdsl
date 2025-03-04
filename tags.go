@@ -19,7 +19,7 @@ type Address []any
 func (tag Address) Render(context.Context) RenderedHTML { return Element("address", tag...) }
 
 type Area Attrs
-func (tag Area) Render(context.Context) RenderedHTML { return AttrsElement("area", tag...) }
+func (tag Area) Render(context.Context) RenderedHTML { return AttrsElement("area", Attrs(tag)) }
 
 type Article []any
 func (tag Article) Render(context.Context) RenderedHTML { return Element("article", tag...) }
@@ -34,7 +34,7 @@ type B []any
 func (tag B) Render(context.Context) RenderedHTML { return Element("b", tag...) }
 
 type Base Attrs
-func (tag Base) Render(context.Context) RenderedHTML { return AttrsElement("base", tag...) }
+func (tag Base) Render(context.Context) RenderedHTML { return AttrsElement("base", Attrs(tag)) }
 
 type Bdi []any
 func (tag Bdi) Render(context.Context) RenderedHTML { return Element("bdi", tag...) }
@@ -49,7 +49,7 @@ type Body []any
 func (tag Body) Render(context.Context) RenderedHTML { return Element("body", tag...) }
 
 type Br Attrs
-func (tag Br) Render(context.Context) RenderedHTML { return AttrsElement("br", tag...) }
+func (tag Br) Render(context.Context) RenderedHTML { return AttrsElement("br", Attrs(tag)) }
 
 type Button []any
 func (tag Button) Render(context.Context) RenderedHTML { return Element("button", tag...) }
@@ -67,7 +67,7 @@ type Code []any
 func (tag Code) Render(context.Context) RenderedHTML { return Element("code", tag...) }
 
 type Col Attrs
-func (tag Col) Render(context.Context) RenderedHTML { return AttrsElement("col", tag...) }
+func (tag Col) Render(context.Context) RenderedHTML { return AttrsElement("col", Attrs(tag)) }
 
 type Colgroup []any
 func (tag Colgroup) Render(context.Context) RenderedHTML { return Element("colgroup", tag...) }
@@ -106,7 +106,7 @@ type Em []any
 func (tag Em) Render(context.Context) RenderedHTML { return Element("em", tag...) }
 
 type Embed Attrs
-func (tag Embed) Render(context.Context) RenderedHTML { return AttrsElement("embed", tag...) }
+func (tag Embed) Render(context.Context) RenderedHTML { return AttrsElement("embed", Attrs(tag)) }
 
 type Fieldset []any
 func (tag Fieldset) Render(context.Context) RenderedHTML { return Element("fieldset", tag...) }
@@ -151,7 +151,7 @@ type Hgroup []any
 func (tag Hgroup) Render(context.Context) RenderedHTML { return Element("hgroup", tag...) }
 
 type Hr Attrs
-func (tag Hr) Render(context.Context) RenderedHTML { return AttrsElement("hr", tag...) }
+func (tag Hr) Render(context.Context) RenderedHTML { return AttrsElement("hr", Attrs(tag)) }
 
 type Html []any
 func (tag Html) Render(context.Context) RenderedHTML { return Element("html", tag...) }
@@ -163,10 +163,10 @@ type Iframe []any
 func (tag Iframe) Render(context.Context) RenderedHTML { return Element("iframe", tag...) }
 
 type Img Attrs
-func (tag Img) Render(context.Context) RenderedHTML { return AttrsElement("img", tag...) }
+func (tag Img) Render(context.Context) RenderedHTML { return AttrsElement("img", Attrs(tag)) }
 
 type Input Attrs
-func (tag Input) Render(context.Context) RenderedHTML { return AttrsElement("input", tag...) }
+func (tag Input) Render(context.Context) RenderedHTML { return AttrsElement("input", Attrs(tag)) }
 
 type Ins []any
 func (tag Ins) Render(context.Context) RenderedHTML { return Element("ins", tag...) }
@@ -184,7 +184,7 @@ type Li []any
 func (tag Li) Render(context.Context) RenderedHTML { return Element("li", tag...) }
 
 type Link Attrs
-func (tag Link) Render(context.Context) RenderedHTML { return AttrsElement("link", tag...) }
+func (tag Link) Render(context.Context) RenderedHTML { return AttrsElement("link", Attrs(tag)) }
 
 type Main []any
 func (tag Main) Render(context.Context) RenderedHTML { return Element("main", tag...) }
@@ -202,10 +202,10 @@ type Menu []any
 func (tag Menu) Render(context.Context) RenderedHTML { return Element("menu", tag...) }
 
 type Menuitem Attrs
-func (tag Menuitem) Render(context.Context) RenderedHTML { return AttrsElement("menuitem", tag...) }
+func (tag Menuitem) Render(context.Context) RenderedHTML { return AttrsElement("menuitem", Attrs(tag)) }
 
 type Meta Attrs
-func (tag Meta) Render(context.Context) RenderedHTML { return AttrsElement("meta", tag...) }
+func (tag Meta) Render(context.Context) RenderedHTML { return AttrsElement("meta", Attrs(tag)) }
 
 type Meter []any
 func (tag Meter) Render(context.Context) RenderedHTML { return Element("meter", tag...) }
@@ -235,7 +235,7 @@ type P []any
 func (tag P) Render(context.Context) RenderedHTML { return Element("p", tag...) }
 
 type Param Attrs
-func (tag Param) Render(context.Context) RenderedHTML { return AttrsElement("param", tag...) }
+func (tag Param) Render(context.Context) RenderedHTML { return AttrsElement("param", Attrs(tag)) }
 
 type Picture []any
 func (tag Picture) Render(context.Context) RenderedHTML { return Element("picture", tag...) }
@@ -289,7 +289,7 @@ type Small []any
 func (tag Small) Render(context.Context) RenderedHTML { return Element("small", tag...) }
 
 type Source Attrs
-func (tag Source) Render(context.Context) RenderedHTML { return AttrsElement("source", tag...) }
+func (tag Source) Render(context.Context) RenderedHTML { return AttrsElement("source", Attrs(tag)) }
 
 type Span []any
 func (tag Span) Render(context.Context) RenderedHTML { return Element("span", tag...) }
@@ -346,7 +346,7 @@ type Tr []any
 func (tag Tr) Render(context.Context) RenderedHTML { return Element("tr", tag...) }
 
 type Track Attrs
-func (tag Track) Render(context.Context) RenderedHTML { return AttrsElement("track", tag...) }
+func (tag Track) Render(context.Context) RenderedHTML { return AttrsElement("track", Attrs(tag)) }
 
 type U []any
 func (tag U) Render(context.Context) RenderedHTML { return Element("u", tag...) }
@@ -361,4 +361,4 @@ type Video []any
 func (tag Video) Render(context.Context) RenderedHTML { return Element("video", tag...) }
 
 type Wbr Attrs
-func (tag Wbr) Render(context.Context) RenderedHTML { return AttrsElement("wbr", tag...) }
+func (tag Wbr) Render(context.Context) RenderedHTML { return AttrsElement("wbr", Attrs(tag)) }

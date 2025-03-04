@@ -14,9 +14,9 @@ type Page [2]HTML
 func (page Page) Render(context.Context) RenderedHTML {
 	return Fragment{DOCTYPE, Html{
 		Head{
-			Meta{{"charset", "UTF-8"}},
-			Meta{{"name", "viewport"}, {"content", "width=device-width, initial-scale=1.0"}},
-			Meta{{"http-equiv", "X-UA-Compatible"}, {"content", "ie=edge"}},
+			Meta{"charset": "UTF-8"},
+			Meta{"name": "viewport", "content": "width=device-width, initial-scale=1.0"},
+			Meta{"http-equiv": "X-UA-Compatible", "content": "ie=edge"},
 			page[0],
 		},
 		Body{

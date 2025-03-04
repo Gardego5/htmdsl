@@ -11,24 +11,24 @@ import (
 )
 
 func layout(title string, children ...HTML) HTML {
-	return Fragment{DOCTYPE, Html{Attrs{{"hidden"}, {"lang", "en"}},
+	return Fragment{DOCTYPE, Html{Attrs{"hidden": nil, "lang": "en"},
 		Head{
 			Title{title},
-			Meta{{"charset", "UTF-8"}},
-			Meta{{"name", "viewport"}, {"content", "width=device-width, initial-scale=1.0"}},
-			Meta{{"http-equiv", "X-UA-Compatible"}, {"content", "ie=edge"}},
+			Meta{"charset": "UTF-8"},
+			Meta{"name": "viewport", "content": "width=device-width, initial-scale=1.0"},
+			Meta{"http-equiv": "X-UA-Compatible", "content": "ie=edge"},
 
 			// Tailwind
-			Script{Attrs{{"type", "module"}, {"src", "https://cdn.skypack.dev/twind/shim"}}},
-			Script{Attrs{{"type", "twind-config"}}, PreEscaped(`{"theme":{"fontFamily":{"sans":["Rokkitt","sans-serif"]}}}`)},
+			Script{Attrs{"type": "module", "src": "https://cdn.skypack.dev/twind/shim"}},
+			Script{Attrs{"type": "twind-config"}, PreEscaped(`{"theme":{"fontFamily":{"sans":["Rokkitt","sans-serif"]}}}`)},
 
 			// Google Fonts
-			Link{{"rel", "preconnect"}, {"href", "https://fonts.googleapis.com"}},
-			Link{{"rel", "preconnect"}, {"href", "https://fonts.gstatic.com"}, {"crossorigin", ""}},
-			Link{{"rel", "stylesheet"}, {"href", "https://fonts.googleapis.com/css2?family=Rokkitt&display=swap"}},
+			Link{"rel": "preconnect", "href": "https://fonts.googleapis.com"},
+			Link{"rel": "preconnect", "href": "https://fonts.gstatic.com", "crossorigin": ""},
+			Link{"rel": "stylesheet", "href": "https://fonts.googleapis.com/css2?family=Rokkitt&display=swap"},
 
 			// Alpine.js
-			Script{Attrs{{"src", "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"}, {"defer"}}},
+			Script{Attrs{"src": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js", "defer": ""}},
 		},
 		Body{Main{
 			Class("font-sans max-w-xl mx-auto flex flex-col gap-2"),
@@ -71,7 +71,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 	table := make(Table, 0, len(keys)+3)
 	table = append(table, Class("w-full"),
-		Attrs{{"x-data", strings.ReplaceAll(string(data), "\"", "'")}},
+		Attrs{"x-data": strings.ReplaceAll(string(data), "\"", "'")},
 		Tr{Class("text-left"), Th{"Name"}, Th{"Value"}})
 	for _, key := range keys {
 		values := r.Form[key]
@@ -79,10 +79,10 @@ func index(w http.ResponseWriter, r *http.Request) {
 		for i, value := range values {
 			tr := make(Tr, 0, 2)
 			if i == 0 {
-				tr = append(tr, Td{Attrs{Class("align-top"), {"rowspan", fmt.Sprint(len(values))}},
-					Input{Class("w-full rounded px-2"), {"type", "text"}, {"x-model", key}}})
+				tr = append(tr, Td{Attrs{"class": "align-top", "rowspan": fmt.Sprint(len(values))},
+					Input{"class": "w-full rounded px-2", "type": "text", "x-model": key}})
 			}
-			tr = append(tr, Td{Input{Class("w-full rounded px-2"), {"type", "text"}, {":name", key}, {"value", value}}})
+			tr = append(tr, Td{Input{"class": "w-full rounded px-2", "type": "text", ":name": key, "value": value}})
 			table = append(table, tr)
 		}
 	}
@@ -91,14 +91,14 @@ func index(w http.ResponseWriter, r *http.Request) {
 	page := layout("Form Demo",
 		H1{Class("text-center text-2xl"), "Form Demo"},
 		P{"You can add query parameters to see them displayed on this page."},
-		Form{Class("grid gap-2"), Attrs{{"method", "POST"}, {"action", "/"}},
+		Form{Class("grid gap-2"), Attrs{"method": "POST", "action": "/"},
 			Div{Class("p-2 rounded border bg-gray-100"), table},
 			Div{Class("grid grid-cols-2 gap-2"),
-				Label{Attrs{{"for", NAME}}, "Name"},
-				Input{Class("rounded border px-2"), {"type", "text"}, {"name", NAME}, {"id", NAME}},
-				Label{Attrs{{"for", VALUE}}, "Value"},
-				Input{Class("rounded border px-2"), {"type", "text"}, {"name", VALUE}, {"id", VALUE}},
-				Button{Attrs{Class("rounded border px-2 col-span-full"), {"type", "submit"}}, "Submit"},
+				Label{Attrs{"for": NAME}, "Name"},
+				Input{"class": "rounded border px-2", "type": "text", "name": NAME, "id": NAME},
+				Label{Attrs{"for": VALUE}, "Value"},
+				Input{"class": "rounded border px-2", "type": "text", "name": VALUE, "id": VALUE},
+				Button{Attrs{"class": "rounded border px-2 col-span-full", "type": "submit"}, "Submit"},
 			},
 		},
 	)
@@ -110,6 +110,8 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.Handle("/", http.HandlerFunc(index))
+
+	fmt.Println("Listening on http://localhost:8080")
 
 	http.ListenAndServe(":8080", mux)
 }
