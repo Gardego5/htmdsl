@@ -52,11 +52,11 @@ func (e *el) addChildren(children ...any) *el {
 		switch child := child.(type) {
 		case Attrs:
 			e.addAttrs(child)
-
 		case *Attrs:
 			e.addAttrs(*child)
 
 		case []any:
+			e.addChildren(child...)
 		case Fragment:
 			e.addChildren(child...)
 
