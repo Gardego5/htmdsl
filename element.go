@@ -24,9 +24,32 @@ type el struct {
 	children   Fragment
 }
 
+type attrIf struct {
+	cond    bool
+	yes, no any
+}
+
+func AttrIf(cond bool, then ...any) any {
+	switch len(then) {
+	case 0:
+		return attrIf{cond: cond}
+	case 1:
+		return attrIf{cond: cond, yes: then[0]}
+	case 2:
+		return attrIf{cond: cond, yes: then[0], no: then[1]}
+	default:
+		panic("invalid number of arguments, expected 0, 1, or 2, found " + fmt.Sprint(len(then)))
+	}
+}
+
 func (e *el) addAttrs(attrs Attrs) *el {
 	for key, val := range attrs {
 		switch val := val.(type) {
+		// Nil case... naked attributes
+		case nil:
+			e.nakedAttrs = append(e.nakedAttrs, key)
+
+		// Normal case
 		case string, bool, int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, float32, float64, complex64, complex128, []byte, []rune:
 			if key != "class" {
 				e.attrs[key] = fmt.Sprint(val)
@@ -36,8 +59,30 @@ func (e *el) addAttrs(attrs Attrs) *el {
 				e.attrs[key] = fmt.Sprint(val)
 			}
 
-		case nil:
-			e.nakedAttrs = append(e.nakedAttrs, key)
+		// Conditionally render attributes
+		case func() any:
+			if val := val(); val != nil {
+				e.addAttrs(Attrs{key: val})
+			}
+
+		// Conditionally render naked attributes
+		case func() bool:
+			if val := val(); val {
+				e.nakedAttrs = append(e.nakedAttrs, key)
+			}
+
+		case attrIf:
+			if val.cond {
+				if val.yes != nil {
+					e.addAttrs(Attrs{key: val.yes})
+				} else {
+					e.nakedAttrs = append(e.nakedAttrs, key)
+				}
+			} else {
+				if val.no != nil {
+					e.addAttrs(Attrs{key: val.no})
+				}
+			}
 
 		default:
 			panic(fmt.Sprintf("unsupported type %T for attribute %s", val, key))
@@ -49,19 +94,38 @@ func (e *el) addAttrs(attrs Attrs) *el {
 
 func (e *el) addChildren(children ...any) *el {
 	for _, child := range children {
-		switch child := child.(type) {
-		case Attrs:
-			e.addAttrs(child)
-		case *Attrs:
-			e.addAttrs(*child)
+		switch inner := child.(type) {
+		case nil:
+			// Do nothing
 
+		case ATTRS:
+			attrs := inner.Attrs()
+			if attrs != nil {
+				e.addAttrs(attrs)
+			}
+
+			switch inner := child.(type) {
+			case Fragment:
+				e.addChildren(inner...)
+			case HTML, RenderedHTML, IndirectHTML:
+				e.addChildren(inner)
+			}
+		case Attrs:
+			e.addAttrs(inner)
+		case *Attrs:
+			e.addAttrs(*inner)
+
+		case IndirectHTML:
+			e.addChildren(inner.Render()...)
 		case []any:
-			e.addChildren(child...)
+			e.addChildren(inner...)
 		case Fragment:
-			e.addChildren(child...)
+			e.addChildren(inner...)
+		case *Fragment:
+			e.addChildren(*inner...)
 
 		default:
-			e.children = append(e.children, child)
+			e.children = append(e.children, inner)
 		}
 	}
 

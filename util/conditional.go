@@ -1,17 +1,13 @@
 package util
 
-import (
-	"context"
-
-	html "github.com/Gardego5/htmdsl"
-)
+import html "github.com/Gardego5/htmdsl"
 
 type conditional struct {
 	cond bool
 	then html.Fragment
 }
 
-var _ html.HTML = (*conditional)(nil)
+var _ html.IndirectHTML = (*conditional)(nil)
 
 func Switch() *conditional                   { return &conditional{} }
 func If(bool bool, then ...any) *conditional { return &conditional{cond: bool, then: then} }
@@ -46,9 +42,10 @@ func (i *conditional) ElseIf(cond bool, then ...any) *conditional {
 
 	return i
 }
-func (i *conditional) Render(context.Context) html.RenderedHTML {
+func (i *conditional) Render() html.Fragment {
 	if i.cond {
 		return i.then
 	}
-	return html.Fragment{}
+
+	return nil
 }

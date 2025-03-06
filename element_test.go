@@ -87,6 +87,18 @@ func TestElement(t *testing.T) {
 			},
 		},
 		{
+			name:     "conditional attributes",
+			expected: `<select id="choices"><option selected>One</option><option>Two</option></select>`,
+			result: Select{
+				Attrs{
+					"class": AttrIf(false, "container"),
+					"id":    AttrIf(1 == 2, "options", "choices"),
+				},
+				Option{Attrs{"selected": AttrIf("One" == "One")}, "One"},
+				Option{Attrs{"selected": AttrIf("One" == "Two")}, "Two"},
+			},
+		},
+		{
 			name:     "invalid hoisting",
 			expected: `map[class:container]<div class="inner">hello</div>`,
 			result: Fragment{
@@ -118,7 +130,8 @@ func TestElement(t *testing.T) {
 
 			got := buf.String()
 			if got != test.expected {
-				t.Errorf("got %q; expected %q", got, test.expected)
+				t.Errorf("expected %q", test.expected)
+				t.Errorf("got      %q", got)
 			}
 		})
 	}

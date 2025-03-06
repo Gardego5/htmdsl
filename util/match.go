@@ -23,6 +23,7 @@ func (m *match) When(val any, then ...any) *match {
 	}
 	return m
 }
+
 func (m *match) Default(then ...any) html.Fragment {
 	if m.matched {
 		return html.Fragment(m.val.([]any))
@@ -30,10 +31,11 @@ func (m *match) Default(then ...any) html.Fragment {
 		return then
 	}
 }
+
 func (m match) Render(context.Context) html.RenderedHTML {
 	if m.matched {
 		return html.Fragment(m.val.([]any))
 	} else {
-		return html.Fragment{}
+		return nil
 	}
 }
